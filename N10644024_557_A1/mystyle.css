@@ -1,0 +1,156 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 99%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  width: 220px;
+}
+
+.item-description{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+tr:nth-child(even) {
+  background-color: #dbdbdb;
+}
+
+tr:hover {background-color: rgb(255, 199, 178);}
+
+body {
+  background-color: rgb(134, 199, 221);
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 15px;
+  text-align: center;
+}
+
+.image {
+  align-self: center;
+  margin: 15px 0px 15px;
+}
+
+ul.b {
+  list-style-type: square;
+}
+
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+#ItemStoreButton{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  margin-bottom: 50px;
+}
+
+#ItemDescription{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  margin-bottom: 50px;
+}
+
+.card{
+  margin-bottom: 10px;
+}
+
+#recommendation{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-top: 50px;
+}
+
+#RecommendationTable{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  margin-bottom: 50px;
+}
+
+#ItemTable{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  margin-bottom: 50px;
+}
+
+#ItemTittle{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card-text{
+  font-size: 20px;
+}
+
+#About{
+  text-align: left;
+}
+
+
+.viewbutton {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.viewbutton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.viewbutton span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.viewbutton:hover span {
+  padding-right: 25px;
+}
+
+.viewbutton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+</style>
