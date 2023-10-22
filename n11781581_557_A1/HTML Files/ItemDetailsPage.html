@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+
+    <!-- Bootstrap CSS and Google Font -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&display=swap" />
+    
+    <!-- Inline CSS -->
+
+    <style>
+        body {
+            font-family: 'Courier Prime', monospace;
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        .jumbotron {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .navbar {
+            background-color: #f8f9fa; /* Lighter gray for navbar */
+        }
+
+        .navbar-brand {
+            color: #9c5300; /* Dark brown */
+        }
+
+        .navbar-brand:hover {
+            color: #945908; /* Darker brown on hover */
+        }
+
+        .navbar-nav .nav-link {
+            color: #9c5300; /* Dark brown */
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #945908; /* Darker brown on hover */
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card img {
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            flex: 1;
+            padding: 1rem;
+            text-align: justify;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            padding: 1rem;
+        }
+
+        .table-container {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        table {
+            margin: 0 auto;
+            max-width: 80%;
+            width: auto;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .table-hover-custom tbody tr:hover {
+            background-color: #8B4513;
+        }
+
+        th, td {
+            border: 1px solid #ca50084a;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .custom-btn-primary {
+            background-color: #ff583383 !important;
+            border-color: #ff5733 !important;
+            color: white !important;
+        }
+
+        .table {
+            position: relative;
+            z-index: 1;
+        }
+
+        .related-products {
+            margin-top: 20px;
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-description {
+            margin-top: 20px;
+        }
+
+        .product-buttons button {
+            margin-right: 10px;
+        }
+    
+    </style>
+
+</head>
+
+<body>
+    <header>
+            <!-- Navigation bar with logo, Home, About Us, Wholesale, Shop, Contact and Login as well as Search Bar -->
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Caffeine Dreams</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" id="logo"><img src="img folder/beans.png" alt="icon"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span><i class="fa-solid fa-bars" style="color: white; font-size: 23px;"></i></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#menu">Wholesale</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#product">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <button class="btn btn-outline-success mx-2">Cart</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-primary mx-2">Login</button>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0 ml-auto">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="jumbotron jumbotron-fluid card card-image" style="background-image: url('img folder/hero\ banner.jpg');">
+            <div class="row justify-content-center mt-5 pb-4">
+                <div class="col-md-8">
+                    <div class="jumbotron shadow py-4 mb-5">
+                        <h1 class="text-center">Caffeine Dreams</h1>
+                        <p class="lead text-center">Explore a variety of our carefully sourced single origin coffee beans. Freshly roasted by us for you!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Details Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="img folder/jamaicablue.jpg" alt="Jamaica Blue Mountain Coffee" class="img-fluid">
+            </div>
+            <div class="col-md-6 product-details">
+                <div class="product-info">
+                    <h3>Jamaica Blue Mountain Coffee</h3>
+                    <p>Unique flavor profile, smooth and creamy with a hint of nuttiness. It's a classic choice for
+                        connoisseurs.</p>
+                    <p><strong>Price: $25.99 for 500 grams</strong></p>
+                    <!-- Product Rating -->
+                    <div class="product-rating">
+                        <h4>Product Rating 4.5/5</h4>
+                    </div>
+                </div>
+                <div class="product-description">
+                    <h4>Description</h4>
+                    <p>There are some conditions that, when combined, make Jamaica Blue Mountain® a rare and unique coffee
+                        with special characteristics that set it apart from the rest, and it is distinguished by a refined,
+                        smooth, and creamy sweetness, without bitterness, with notes of sweet herbs, nuts, and chocolate.</p>
+                </div>
+                <div class="product-buttons">
+                    <button class="btn btn-primary">Buy Now</button>
+                    <button class="btn btn-secondary">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Products -->
+    <div class="related-products text-center">
+        <h4>Related Products</h4>
+        <div class="row mx-auto"> <!-- Use mx-auto to center the content -->
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="img folder/hariov60.jpg" class="card-img-top" alt="Related Product 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Hario V60 Dripper</h5>
+                        <p class="card-text">$38.00</p>
+                        <a href="#" class="btn btn-primary">View Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="img folder/BurundiOG.jpg" class="card-img-top" alt="Related Product 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Burundi</h5>
+                        <p class="card-text">$18.99 for 500 grams</p>
+                        <a href="#" class="btn btn-primary">View Product</a>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+    </div>
+
+  <!-- Contact form -->
+  <section>
+    <h3>Cant find the beans you want? Hit us up!</h3>
+    <form method="post">
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" required>
+            <label for="email">E-mail: </label>
+            <input type="email" name="email" id="email" required>
+            <label for="message">Message: </label>
+            <input type="message" name="message" id="message" required>
+            <input type="submit" value="Send Message!">
+    </form>
+</section>
+
+ </main>
+
+<!-- Footer of the website -->
+
+<footer class="footer">
+ <div class="text-center mt-2">
+     <a href="shipping-policy.html" class="btn btn-secondary">Shipping Policy</a>
+ </div>
+ <div class="text-center mt-2">
+     <a href="termsandconditions.html" class="btn btn-secondary">Terms & Conditions</a>
+ </div>
+<div class="text-center py-2 bg-secondary">
+<span class="text-light">Made by Marco - N11781581 - IFN557 - FRONT END PROTOTYPE &copy; October 2023</span>
+</div>
+</footer>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
