@@ -3,6 +3,7 @@ from wtforms.fields import SubmitField, StringField
 from wtforms.validators import InputRequired, email
 
 # form used in basket
+#CAN USE AS IT IS ****************************************************************************************************
 class CheckoutForm(FlaskForm):
     firstname = StringField("Your first name", validators=[InputRequired()])
     surname = StringField("Your surname", validators=[InputRequired()])

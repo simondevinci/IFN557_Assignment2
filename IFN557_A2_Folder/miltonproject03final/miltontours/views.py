@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, url_for, request, session, flash, redirect
-from .models import City, Tour, Order
+from .models import City, Tour, Order, Item, Category
 from datetime import datetime
 from .forms import CheckoutForm
 from . import db
@@ -11,10 +11,21 @@ def index():
     cities = City.query.order_by(City.name).all()
     return render_template('index.html', cities=cities)
 
+    #REPLACE THE CITIES PART**********************************************************************************
+    items = Item.query.order_by(Item.name).all()
+    return render_template('index.html', items = items)
+
+
 @main_bp.route('/tours/<int:cityid>')
 def citytours(cityid):
     tours = Tour.query.filter(Tour.city_id==cityid)
     return render_template('citytours.html', tours=tours)
+
+#POINTS TO ITEMS.HTML IF IT EXIST *****************************************************************************
+@main_bp.route('/items/<int:itemid>')
+def citytours(itemid):
+    items = Item.query.filter(Item.id==itemid)
+    return render_template('items.html', items = items)
 
 # Referred to as "Basket" to the user
 @main_bp.route('/order', methods=['POST','GET'])
@@ -76,7 +87,23 @@ def deleteorderitem():
             return 'Problem deleting item from order'
     return redirect(url_for('main.order'))
 
-# Scrap basket
+#************************************************************************************************************
+@main_bp.route('/deleteorderitem', methods=['POST'])
+def deleteorderitem():
+    id=request.form['id']
+    if 'order_id' in session:
+        order = Order.query.get_or_404(session['order_id'])
+        item_to_delete = Item.query.get(id)
+        try:
+            order.items.remove(item_to_delete)
+            db.session.commit()
+            return redirect(url_for('main.order'))
+        except:
+            return 'Problem deleting item from order'
+    return redirect(url_for('main.order'))
+
+# Scrap basket 
+#CAN USE THIS AS IT IS ***************************************************************************************************
 @main_bp.route('/deleteorder')
 def deleteorder():
     if 'order_id' in session:
@@ -110,6 +137,34 @@ def checkout():
                 return 'There was an issue completing your order'
     return render_template('checkout.html', form=form)
 
+
+#ROUTE FOR CHECK OUT ********************************************************************************************************
+@main_bp.route('/checkout', methods=['POST','GET'])
+def checkout():
+    form = CheckoutForm() 
+    if 'order_id' in session:
+        order = Order.query.get_or_404(session['order_id'])
+       
+        if form.validate_on_submit():
+            order.status = True
+            order.firstname = form.firstname.data
+            order.surname = form.surname.data
+            order.email = form.email.data
+            order.phone = form.phone.data
+            totalcost = 0
+            for item in order.itemnames:
+                totalcost = totalcost + item.price
+            order.totalcost = totalcost
+            order.date = datetime.now()
+            try:
+                db.session.commit()
+                del session['order_id']
+                flash('Thank you! One of our awesome team members will contact you soon...')
+                return redirect(url_for('main.index'))
+            except:
+                return 'There was an issue completing your order'
+    return render_template('checkout.html', form=form)
+
 @main_bp.route('/tours')
 
 def search():
@@ -121,3 +176,16 @@ def search():
     tours = Tour.query.filter(Tour.description.like(search)).all()
 
     return render_template('citytours.html', tours=tours)
+
+#SHOWCASE ITEMS BY CATEGORY ****************************************************************************************************
+@main_bp.route('/items')
+
+def search():
+
+    search = request.args.get('search')
+
+    search = '%{}%'.format(search) # substrings will match
+
+    items = Item.query.filter(Item.description.like(search)).all()
+
+    return render_template('items.html', items = items)
