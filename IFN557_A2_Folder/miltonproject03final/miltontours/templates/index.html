@@ -1,73 +1,193 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<!-- add a big banner to welcome user -->
+<!-- add a big banner to welcome user --><!-- NB Simon - not sure if we shud put this in index of have it in base where it shows in all pages, i have added it in base -->
 <div class="jumbotron jumbotron-fluid card card-image" style="background-image: url({{url_for('static', filename='img/header.jpg')}});">
     <div class="text-white text-center py-5 px-4">
         <div>
-            <h1 class="display-2">Welcome to Milton Tours</h1>
-            <p class="display-4 text-dark">You need a vacation!</p>
+            <h1 class="display-2">Welcome to Our Site</h1>
+            <p class="display-4 text-dark">You know we got them goods!</p>
         </div>
     </div>
 </div>
 {% endblock %}
+<!-- to decide if we want jumbo in base or index-->
 
 {% block main %}
-<!-- marketing information -->
+<!-- item information -->
 <section>
-    <div class="container">
-        <div class="text-white text-center">
-            <div>
-                <p class="h1 text-dark mb-4">Why us?</p>
+    <div class="container-fluid">
+        <div class="row justify-content-end mt-3">
+            <div class="col-md-6">
+                <div class="float-right">
+                    <label for="sortSelect">Sort By:</label>
+                    <select id="sortSelect" onchange="sortProducts()" class="form-control">
+                        <option value="priceAsc">Price: Low to High</option>
+                        <option value="priceDesc">Price: High to Low</option>
+                    </select>
+                </div>
             </div>
         </div>
-        <!-- CSS Grid -->
-        <div class="row">
-            <div class="col-md-6">
-                <article>
-                    <h2>Beautiful locations</h2>
-                    <p>We have tours in some of the best locations all around Australia:</p>
-                    <ul>
-                        <li>Close to city center</li>
-                        <li>Free shuttle service to Airport</li>
-                        <li>Helpful staff</li>
-                    </ul>
-                </article>
-
-            </div>
-            <div class="col-md-6">
-                <article>
-                    <h2>Affordable selections</h2>
-                    <p>We have <span> great prices and offers </span> all year round!</p>
-                    <p>Click <a href="discounts.html">here</a> for more information.</p>
-                </article>
-            </div>
+    </div>
+    <h1>Our Featured Items</h1>
+    <div class="container-fluid">
+        <div class="card-deck">
+            <article class="card">
+                <img class="card-img-top" src="Images/AirPods.jpg" alt="AirPods Pro (2nd Generation) 1" width="300" height="200">
+                <div class="card-body">
+                    <h3 class="card-title">AirPods Pro (2nd Generation)</h3>
+                    <p class="card-text">The Apple AirPods Pro (2nd generation) modestly improve upon the first-generation AirPods Pro and feature the same iconic look. </p>
+                </div>
+                <div class="card-footer mt-auto">
+                    <p class="card-text"><strong>300.00</strong></p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                    <a href="#" class="btn btn-secondary">Add to Cart</a>
+                </div>
+            </article>
+            <article class="card">
+                <img class="card-img-top" src="Images/CASIO Calculator.jpg" alt="CASIO Calculator" width="300" height="200">
+                <div class="card-body">
+                    <h3 class="card-title">CASIO fx-991ES PLUS</h3>
+                    <p class="card-text">
+Really good form factor. Has all of the functions you'll need and then some. The case has unit conversions on the inside, which is neat.</p>
+                </div>
+                <div class="card-footer mt-auto">
+                    <p class="card-text"><strong>$56.39</strong></p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                    <a href="#" class="btn btn-secondary">Add to Cart</a>
+                </div>
+            </article>
+            <article class="card">
+                <img class="card-img-top" src="Images/ScrewDriver.jpg" alt="ScrewDriver" width="300" height="200">
+                <div class="card-body">
+                    <h3 class="card-title">9 PCS Magnetic Screwdriver Set</h3>
+                    <p class="card-text">This screwdriver set features non-slip soft grips. Rubber-based ergonomically non-skid and soft-grip handle for improved control and comfort.</p>
+                </div>
+                <div class="card-footer mt-auto">
+                    <p class="card-text"><strong>$27.49</strong></p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                    <a href="#" class="btn btn-secondary">Add to Cart</a>
+                </div>
+            </article>
+            <article class="card">
+                <img class="card-img-top" src="Images/ApplePen.jpg" alt="Apple Pen" width="300" height="200">
+                <div class="card-body">
+                    <h3 class="card-title">Apple Pen (2nd Generation)</h3>
+                    <p class="card-text">Apple Pencil (2nd generation) delivers pixel-perfect precision and industry-leading low latency, making it great for drawing, sketching, colouring, taking notes, marking up PDFs and more. And it’s as easy and natural to use as a pencil.</p>
+                </div>
+                <div class="card-footer mt-auto">
+                    <p class="card-text"><strong>$319.00</strong></p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                    <a href="#" class="btn btn-secondary">Add to Cart</a>
+                </div>
+            </article>
         </div>
-        <!-- Horizontal Rule -->
-        <hr>
     </div>
 </section>
 
-<!-- display the cities to the user -->
-<section>
-    <div class="text-dark text-center">
-        <div>
-            <p class="h3 text-dark mb-4" id="cities_anchor">Pick a city to see what we have to offer!</p>
-        </div>
-    </div>
-    <div class="card-deck">
+<!-- table -->
 
-        {% for city in cities %}
-        <div class="card">
-            <img class="card-img-top" src="{{ url_for('static', filename='img/'+city.image) }}" alt="Card image">
-            <div class="card-body">
-                <h4 class="card-title">{{ city.name }}</h4>
-                <p class="card-text">{{ city.description }}</p>
-            </div>
-            <div class="card-footer"><a href= "{{ url_for('main.citytours', cityid=city.id) }}" class="btn btn-primary">Tours</a></div>
-        </div>
-        {% endfor %}
+<article>
+    <h2>Don't know what to buy? This list might help!</h2>
+    <h3>Most Popular Items on our store</h3>
+    <div class="table-container">
+        <table class="table table-hover custom #">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price (USD$)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AirPod (2nd Generation)</td>
+                    <td>$300.00</td>
+                    <td>
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-secondary">Details</button>
+                    </td>
+                </tr>
+                <tr>
+                   <td>CASIO fx-991ES PLUS</td>
+                    <td>$56.39</td>
+                    <td>
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-secondary">Details</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9 PCS Magnetic Screwdriver Set</td>
+                    <td>$27.49</td>
+                    <td>
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-secondary">Details</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ORIA Combination Lock</td>
+                    <td>$14.99</td>
+                    <td>
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-secondary">Details</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Wundermax Door Stopper</td>
+                    <td>$17.35</td>
+                    <td>
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-secondary">Details</button>
+                    </td>
+                </tr>
+                <tr>
+                   <td>Q Series, Notebook</td>
+                    <td>$12.15</td>
+                    <td>
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-secondary">Details</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>PUMA Men's Retro T Shirt, Black</td>
+                    <td>$19.99</td>
+                    <td>
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-secondary">Details</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>PROIRON Yoga Mat</td>
+                    <td>$39.19</td>
+                    <td>
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-secondary">Details</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Shokz OpenRun Bone Conduction Headphones</td>
+                    <td>$219.00</td>
+                    <td>
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-secondary">Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+</article>
+
+<section>
+    <h3>Can't find the item you want? Hit us up!</h3>
+    <form method="post">
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name" required>
+        <label for="email">E-mail: </label>
+        <input type="email" name="email" id="email" required>
+        <label for="message">Message: </label>
+        <input type="text" name="message" id="message" required>
+        <input type="submit" value="Send Message!">
+    </form>
 </section>
 {% endblock %}
 
