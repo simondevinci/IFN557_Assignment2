@@ -4,6 +4,9 @@ from datetime import datetime
 from .forms import CheckoutForm
 from . import db
 
+# ADD DATABASE PART HERE
+
+
 main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
@@ -21,11 +24,12 @@ def citytours(cityid):
     tours = Tour.query.filter(Tour.city_id==cityid)
     return render_template('citytours.html', tours=tours)
 
-#POINTS TO ITEMS.HTML IF IT EXIST *****************************************************************************
-@main_bp.route('/items/<int:itemid>')
-def citytours(itemid):
-    items = Item.query.filter(Item.id==itemid)
-    return render_template('items.html', items = items)
+#DISPLAY ITEM CATEGORY IF IT EXIST *****************************************************************************
+@main_bp.route('/items/<string:itemcategory>')
+def itembycategory(itemcategory):
+    items_category = Item.query.filter(Item.item_category==itemcategory)
+    #SENDING A ARRAY OF ITEMS WITH THE CATEGORY MATCHING THE SPECIFIED CATEGORY
+    return render_template('items.html', category = items_category)
 
 # Referred to as "Basket" to the user
 @main_bp.route('/order', methods=['POST','GET'])
@@ -58,9 +62,9 @@ def order():
             total_price = total_price + tour.price
     
     # are we adding an item?
-    if tour_id is not None and order is not None:
-        tour = Tour.query.get(tour_id)
-        if tour not in order.tours:
+    if item_id is not None and order is not None:
+        item = Item.query.get(item_id)
+        if item not in order.item:
             try:
                 order.tours.append(tour)
                 db.session.commit()
@@ -189,3 +193,6 @@ def search():
     items = Item.query.filter(Item.description.like(search)).all()
 
     return render_template('items.html', items = items)
+
+
+# CREATE A BLUEPRINT FOR THE ITEMDETAILPAGE HERE #######################################################################################
