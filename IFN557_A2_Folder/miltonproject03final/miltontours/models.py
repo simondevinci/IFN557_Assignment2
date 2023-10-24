@@ -11,11 +11,12 @@ class Item(db.Model):
     price = db.Column(db.Float, nullable=False)
     item_category = db.Column(db.String(64), nullable = False)
 
-    def __init__ (self, image, name, price, category):
+    def __init__ (self, image, name, price, category, itemid):
         self.image = image
         self.name = name
         self.price = price
         self.item_category = category
+        self.id = itemid
 
     def __repr__(self):
         return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}\nPrice: {self.price}\nCategory: {self.item_category}"
