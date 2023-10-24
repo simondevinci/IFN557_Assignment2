@@ -6,7 +6,7 @@ from . import db
 
 # ADD DATABASE PART HERE
 #I ADDED IN MOST OF THE INFORMATION BUT HAVENT ADD DESCRIPTION, YOU CAN ADD IT HERE. JUST REMEMBER TO ADD THE DESCRIPTION VARIABLE INTO THE CONSTRUCTOR IN THE MODEL.PY
-#JUST NEED TO ADD IN DESCRIPTIONS 
+#JUST NEED TO ADD IN DESCRIPTIONS THE 
 t1 = Item(image="t_AirPods.jpg",name="AirPods Pro 2", price=300.00, category="Electronics", itemid= 1,
           itemdescription="")
 t2 = Item(image="t_CASIO Calculator.jpg",name="CASIO fx-991ES PLUS", price=59.39, category="Office Supplies", itemid= 2,
@@ -149,5 +149,10 @@ def search():
 
     return render_template('items.html', items = items)
 
+#ADDED A BLUEPRINT FOR THE ITEMDETAILS PAGE
+@main_bp.route('/items/<int:itemid>')
+def itemdetails(itemid):
+    item = Item.query.filter(Item.id == itemid)
+    return render_template('itemdetails.html', item = item)
 
 # CREATE A BLUEPRINT FOR THE ITEMDETAILPAGE HERE #######################################################################################
