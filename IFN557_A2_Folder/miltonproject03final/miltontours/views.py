@@ -11,18 +11,10 @@ main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def index():
-    cities = City.query.order_by(City.name).all()
-    return render_template('index.html', cities=cities)
-
     #REPLACE THE CITIES PART**********************************************************************************
     items = Item.query.order_by(Item.name).all()
     return render_template('index.html', items = items)
 
-
-@main_bp.route('/tours/<int:cityid>')
-def citytours(cityid):
-    tours = Tour.query.filter(Tour.city_id==cityid)
-    return render_template('citytours.html', tours=tours)
 
 #DISPLAY ITEM CATEGORY IF IT EXIST *****************************************************************************
 @main_bp.route('/items/<string:itemcategory>')
@@ -34,7 +26,7 @@ def itembycategory(itemcategory):
 # Referred to as "Basket" to the user
 @main_bp.route('/order', methods=['POST','GET'])
 def order():
-    tour_id = request.values.get('tour_id')
+    item_id = request.values.get('item_id')
 
     # retrieve order if there is one
     if 'order_id'in session.keys():
@@ -46,7 +38,7 @@ def order():
 
     # create new order if needed
     if order is None:
-        order = Order(status = False, firstname='', surname='', email='', phone='', totalcost=0, date=datetime.now())
+        order = Order(status = False, firstname='', surname='', email='', phone='', totalcost=0, date=datetime.now(), item = Item.query.get(item_id))
         try:
             db.session.add(order)
             db.session.commit()
@@ -58,15 +50,15 @@ def order():
     # calcultate totalprice
     total_price = 0
     if order is not None:
-        for tour in order.tours:
-            total_price = total_price + tour.price
+        for item in order.item:
+            total_price = total_price + item.price
     
     # are we adding an item?
     if item_id is not None and order is not None:
         item = Item.query.get(item_id)
         if item not in order.item:
             try:
-                order.tours.append(tour)
+                order.tours.append(item)
                 db.session.commit()
             except:
                 return 'There was an issue adding the item to your basket'
@@ -76,21 +68,6 @@ def order():
             return redirect(url_for('main.order'))
     return render_template('order.html', order = order, total_price=total_price)
 
-# Delete specific basket items
-@main_bp.route('/deleteorderitem', methods=['POST'])
-def deleteorderitem():
-    id=request.form['id']
-    if 'order_id' in session:
-        order = Order.query.get_or_404(session['order_id'])
-        tour_to_delete = Tour.query.get(id)
-        try:
-            order.tours.remove(tour_to_delete)
-            db.session.commit()
-            return redirect(url_for('main.order'))
-        except:
-            return 'Problem deleting item from order'
-    return redirect(url_for('main.order'))
-
 #************************************************************************************************************
 @main_bp.route('/deleteorderitem', methods=['POST'])
 def deleteorderitem():
@@ -99,7 +76,7 @@ def deleteorderitem():
         order = Order.query.get_or_404(session['order_id'])
         item_to_delete = Item.query.get(id)
         try:
-            order.items.remove(item_to_delete)
+            order.item.remove(item_to_delete)
             db.session.commit()
             return redirect(url_for('main.order'))
         except:
@@ -127,9 +104,10 @@ def checkout():
             order.surname = form.surname.data
             order.email = form.email.data
             order.phone = form.phone.data
+            order.shippingdetails = form.shippingaddress.data
             totalcost = 0
-            for tour in order.tours:
-                totalcost = totalcost + tour.price
+            for items in order.item:
+                totalcost = totalcost + items.price
             order.totalcost = totalcost
             order.date = datetime.now()
             try:
@@ -140,46 +118,6 @@ def checkout():
             except:
                 return 'There was an issue completing your order'
     return render_template('checkout.html', form=form)
-
-
-#ROUTE FOR CHECK OUT ********************************************************************************************************
-@main_bp.route('/checkout', methods=['POST','GET'])
-def checkout():
-    form = CheckoutForm() 
-    if 'order_id' in session:
-        order = Order.query.get_or_404(session['order_id'])
-       
-        if form.validate_on_submit():
-            order.status = True
-            order.firstname = form.firstname.data
-            order.surname = form.surname.data
-            order.email = form.email.data
-            order.phone = form.phone.data
-            totalcost = 0
-            for item in order.itemnames:
-                totalcost = totalcost + item.price
-            order.totalcost = totalcost
-            order.date = datetime.now()
-            try:
-                db.session.commit()
-                del session['order_id']
-                flash('Thank you! One of our awesome team members will contact you soon...')
-                return redirect(url_for('main.index'))
-            except:
-                return 'There was an issue completing your order'
-    return render_template('checkout.html', form=form)
-
-@main_bp.route('/tours')
-
-def search():
-
-    search = request.args.get('search')
-
-    search = '%{}%'.format(search) # substrings will match
-
-    tours = Tour.query.filter(Tour.description.like(search)).all()
-
-    return render_template('citytours.html', tours=tours)
 
 #SHOWCASE ITEMS BY CATEGORY ****************************************************************************************************
 @main_bp.route('/items')
