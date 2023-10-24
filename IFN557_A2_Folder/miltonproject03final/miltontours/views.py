@@ -7,6 +7,16 @@ from . import db
 # ADD DATABASE PART HERE
 
 
+AirPodsPro = Item(imageURLhere,"AirPods Pro 2", 300.00, "Electronics")
+CASIOCalculator = Item(imageURLhere,"CASIO fx-991ES PLUS", 59.39, "Office Supplies")
+Screwdriver = Item(imageURLhere,"9 PCS Magnetic Screwdriver Set", 27.49, "Hardware")
+ApplePen = Item(imageURLhere,"Apple Pen", 319.00, "Electronics")
+ShokzOpenRun = Item(imageURLhere,"Shokz OpenRun Bone Conductor Headphones", 219.00, "Earphones")
+Lock = Item(imageURLhere,"ORIA Combination Lock", 14.99, "Office Supplies")
+AppleCable = Item(imageURLhere,"Apple USB-C to Lightning Cable", 29.00, "Electronics")
+SanDisk = Item(imageURLhere,"SanDisk 2TB SSD", 214.99, "Storage Device")
+
+
 main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
@@ -38,7 +48,7 @@ def order():
 
     # create new order if needed
     if order is None:
-        order = Order(status = False, firstname='', surname='', email='', phone='', totalcost=0, date=datetime.now(), item = Item.query.get(item_id))
+        order = Order(status = False, firstname='', surname='', email='', phone='', totalcost=0, date=datetime.now(), item = Item())
         try:
             db.session.add(order)
             db.session.commit()
@@ -58,7 +68,7 @@ def order():
         item = Item.query.get(item_id)
         if item not in order.item:
             try:
-                order.tours.append(item)
+                order.item.append(item)
                 db.session.commit()
             except:
                 return 'There was an issue adding the item to your basket'

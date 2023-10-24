@@ -11,6 +11,12 @@ class Item(db.Model):
     price = db.Column(db.Float, nullable=False)
     item_category = db.Column(db.String(64), nullable = False)
 
+    def __init__ (self, image, name, price, category):
+        self.image = image
+        self.name = name
+        self.price = price
+        self.item_category = category
+
     def __repr__(self):
         return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}\nPrice: {self.price}\nCategory: {self.item_category}"
     
@@ -27,6 +33,9 @@ class Order(db.Model):
     date = db.Column(db.DateTime)
     shippingdetails = db.Column(db.String(64))
     item = db.Column(db.Item)
+
+    def __init__ (self, item):
+        self.item = item
     
     def __repr__(self):
         return f"ID: {self.id}\nStatus: {self.status}\nFirst Name: {self.firstname}\nSurname: {self.surname}\nEmail: {self.email}\nPhone: {self.phone}\nItems: {self.item}\nDate: {self.date}\nShipping Address: {self.shippingdetails}\nTotal Cost: ${self.total_cost}"
