@@ -52,7 +52,7 @@ class Item(db.Model):
     description = db.Column(db.String(500), nullable=False)
     image = db.Column(db.String(60), nullable=False)
     price = db.Column(db.Float, nullable=False)
-    item_category = db.relationship("Category", secondary=itemcategory, backref="items")
+    item_category = db.Column(db.String(64), nullable = False)
     
     def __repr__(self):
         return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}\nPrice: {self.price}\nCategory: {Category.name}"
