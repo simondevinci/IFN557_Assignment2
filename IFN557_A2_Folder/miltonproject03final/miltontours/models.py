@@ -11,7 +11,7 @@ class Item(db.Model):
     price = db.Column(db.Float, nullable=False)
     item_category = db.Column(db.String(64), nullable = False)
 
-    def __init__ (self, image, name, price, category, itemid):
+    def __init__ (self, image, name, price, category, itemid, itemdescription):
         self.image = image
         self.name = name
         self.price = price
