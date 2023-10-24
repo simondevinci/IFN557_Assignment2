@@ -6,15 +6,14 @@ from . import db
 
 # ADD DATABASE PART HERE
 
-
-AirPodsPro = Item("AirPods.jpg","AirPods Pro 2", 300.00, "Electronics")
-CASIOCalculator = Item("CASIO Calculator.jpg","CASIO fx-991ES PLUS", 59.39, "Office Supplies")
-Screwdriver = Item("ScrewDriver.jpg","9 PCS Magnetic Screwdriver Set", 27.49, "Hardware")
-ApplePen = Item("ApplePen.jpg","Apple Pen", 319.00, "Electronics")
-ShokzOpenRun = Item("OpenRun.jpg","Shokz OpenRun Bone Conductor Headphones", 219.00, "Earphones")
-Lock = Item("LOck.jpg","ORIA Combination Lock", 14.99, "Office Supplies")
-AppleCable = Item("AppleCable.jpg","Apple USB-C to Lightning Cable", 29.00, "Electronics")
-SanDisk = Item("SanDisk.jpg","SanDisk 2TB SSD", 214.99, "Storage Device")
+t1 = Item(image="t_AirPods.jpg",name="AirPods Pro 2", price=300.00, category="Electronics")
+t2 = Item(image="t_CASIO Calculator.jpg",name="CASIO fx-991ES PLUS", price=59.39, category="Office Supplies")
+t3 = Item(image="t_ScrewDriver.jpg",name="9 PCS Magnetic Screwdriver Set", price=27.49, category="Hardware")
+t4 = Item(image="t_ApplePen.jpg",name="Apple Pen", price=319.00, category="Electronics")
+t5 = Item(image="t_OpenRun.jpg",name="Shokz OpenRun Bone Conductor Headphones", price=219.00, category="Earphones")
+t6 = Item(image="t_LOck.jpg",name="ORIA Combination Lock", price=14.99, category="Office Supplies")
+t7 = Item(image="t_AppleCable.jpg",name="Apple USB-C to Lightning Cable", price=29.00, category="Electronics")
+t8 = Item(image="t_SanDisk.jpg",name="SanDisk 2TB SSD", price=214.99, category="Storage Device")
 
 
 main_bp = Blueprint('main', __name__)
