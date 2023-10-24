@@ -7,14 +7,14 @@ from . import db
 # ADD DATABASE PART HERE
 
 
-AirPodsPro = Item(imageURLhere,"AirPods Pro 2", 300.00, "Electronics")
-CASIOCalculator = Item(imageURLhere,"CASIO fx-991ES PLUS", 59.39, "Office Supplies")
-Screwdriver = Item(imageURLhere,"9 PCS Magnetic Screwdriver Set", 27.49, "Hardware")
-ApplePen = Item(imageURLhere,"Apple Pen", 319.00, "Electronics")
-ShokzOpenRun = Item(imageURLhere,"Shokz OpenRun Bone Conductor Headphones", 219.00, "Earphones")
-Lock = Item(imageURLhere,"ORIA Combination Lock", 14.99, "Office Supplies")
-AppleCable = Item(imageURLhere,"Apple USB-C to Lightning Cable", 29.00, "Electronics")
-SanDisk = Item(imageURLhere,"SanDisk 2TB SSD", 214.99, "Storage Device")
+AirPodsPro = Item("AirPods.jpg","AirPods Pro 2", 300.00, "Electronics")
+CASIOCalculator = Item("CASIO Calculator.jpg","CASIO fx-991ES PLUS", 59.39, "Office Supplies")
+Screwdriver = Item("ScrewDriver.jpg","9 PCS Magnetic Screwdriver Set", 27.49, "Hardware")
+ApplePen = Item("ApplePen.jpg","Apple Pen", 319.00, "Electronics")
+ShokzOpenRun = Item("OpenRun.jpg","Shokz OpenRun Bone Conductor Headphones", 219.00, "Earphones")
+Lock = Item("LOck.jpg","ORIA Combination Lock", 14.99, "Office Supplies")
+AppleCable = Item("AppleCable.jpg","Apple USB-C to Lightning Cable", 29.00, "Electronics")
+SanDisk = Item("SanDisk.jpg","SanDisk 2TB SSD", 214.99, "Storage Device")
 
 
 main_bp = Blueprint('main', __name__)
