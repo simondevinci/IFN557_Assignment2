@@ -55,18 +55,7 @@ class Item(db.Model):
     item_category = db.Column(db.String(64), nullable = False)
     
     def __repr__(self):
-        return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}\nPrice: {self.price}\nCategory: {Category.name}"
-#A REFERENCE TABLE TO COMPARE WHAT ID IS WHAT CATEGORY NAME BETWEEN THE ITEM AND CATEGORY CLASSES
-itemdetails = db.Table('itemcategory', 
-    db.Column('item_id', db.Integer,db.ForeignKey('items.id'), nullable=False),
-    db.Column('category_id',db.Integer,db.ForeignKey('categories.id'),nullable=False),
-    db.PrimaryKeyConstraint('item_id', 'category_id') )
-    
-#NEED THIS CLASS TO REMEMBER ALL THE "TAG" POSSIBLE FOR THE ITEMS BY CATEGORY 
-class Category(db.Model):
-    __tablename__ = "categories"
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(64),nullable = False)
+        return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}\nPrice: {self.price}\nCategory: {self.item_category}"
     
 
 class Order(db.Model):
