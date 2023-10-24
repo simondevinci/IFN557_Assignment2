@@ -30,7 +30,7 @@ def index():
 def itembycategory(itemcategory):
     items_category = Item.query.filter(Item.item_category==itemcategory)
     #SENDING A ARRAY OF ITEMS WITH THE CATEGORY MATCHING THE SPECIFIED CATEGORY
-    return render_template('items.html', category = items_category)
+    return render_template('categories.html', items = items_category)
 
 # Referred to as "Basket" to the user
 @main_bp.route('/order', methods=['POST','GET'])
