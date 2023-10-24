@@ -9,6 +9,7 @@ class CheckoutForm(FlaskForm):
     surname = StringField("Your surname", validators=[InputRequired()])
     email = StringField("Your email", validators=[InputRequired(), email()])
     phone = StringField("Your phone number", validators=[InputRequired()])
+    shippingaddress = StringField("Your shipping address", validators=[InputRequired()])
     submit = SubmitField("Send to Agent")
 
 
