@@ -121,7 +121,6 @@ def checkout():
 
 #SHOWCASE ITEMS BY CATEGORY ****************************************************************************************************
 @main_bp.route('/items')
-
 def search():
 
     search = request.args.get('search')
