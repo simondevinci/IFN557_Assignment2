@@ -5,8 +5,8 @@
 <div class="jumbotron jumbotron-fluid card card-image" style="background-image: url({{url_for('static', filename='img/header.jpg')}});">
     <div class="text-white text-center py-5 px-4">
         <div>
-            <h1 class="display-2">Welcome to Milton Tours</h1>
-            <p class="display-4 text-dark">You need a vacation!</p>
+            <h1 class="display-2">Welcome to SM LoFi</h1>
+            <p class="display-4 text-dark">Buy stuff from us!</p>
         </div>
     </div>
 </div>
@@ -25,12 +25,12 @@
         <div class="row">
             <div class="col-md-6">
                 <article>
-                    <h2>Beautiful locations</h2>
-                    <p>We have tours in some of the best locations all around Australia:</p>
+                    <h2>We have your best interests in mind!</h2>
+                    <p>We have great electronics and accessories that were carefully selected based on quality:</p>
                     <ul>
-                        <li>Close to city center</li>
-                        <li>Free shuttle service to Airport</li>
-                        <li>Helpful staff</li>
+                        <li>Premium items</li>
+                        <li>Great price</li>
+                        <li>Awesome after sales support</li>
                     </ul>
                 </article>
 
@@ -52,19 +52,76 @@
 <section>
     <div class="text-dark text-center">
         <div>
-            <p class="h3 text-dark mb-4" id="cities_anchor">Pick a city to see what we have to offer!</p>
+            <p class="h3 text-dark mb-4" id="cities_anchor">Pick a category to see what we have to offer!</p>
         </div>
     </div>
     <div class="card-deck">
 
-        {% for city in cities %}
-        <div class="card">
-            <img class="card-img-top" src="{{ url_for('static', filename='img/'+city.image) }}" alt="Card image">
+<h1>Our Featured Items</h1>
+<div class="container-fluid">
+    <div class="card-deck">
+        <article class="card">
+            <img class="card-img-top" src="Images/AirPods.jpg" alt="AirPods Pro (2nd Generation) 1" width="300" height="200">
             <div class="card-body">
-                <h4 class="card-title">{{ city.name }}</h4>
-                <p class="card-text">{{ city.description }}</p>
+                <h3 class="card-title">AirPods Pro (2nd Generation)</h3>
+                <p class="card-text">The Apple AirPods Pro (2nd generation) modestly improve upon the first-generation AirPods Pro and feature the same iconic look.</p>
             </div>
-            <div class="card-footer"><a href= "{{ url_for('main.citytours', cityid=city.id) }}" class="btn btn-primary">Tours</a></div>
+            <div class="card-footer mt-auto">
+                <p class="card-text"><strong>$300.00</strong></p>
+                <a href="/view-details" class="btn btn-primary">View Details</a>
+                <a href="/add-to-cart" class="btn btn-secondary">Add to Cart</a>
+            </div>
+        </article>
+        <article class="card">
+            <img class="card-img-top" src="Images/CASIO Calculator.jpg" alt="CASIO Calculator" width="300" height="200">
+            <div class="card-body">
+                <h3 class="card-title">CASIO fx-991ES PLUS</h3>
+                <p class="card-text">
+                    Really good form factor. Has all of the functions you'll need and then some. The case has unit conversions on the inside, which is neat.
+                </p>
+            </div>
+            <div class="card-footer mt-auto">
+                <p class="card-text"><strong>$56.39</strong></p>
+                <a href="/view-details" class="btn btn-primary">View Details</a>
+                <a href="/add-to-cart" class="btn btn-secondary">Add to Cart</a>
+            </div>
+        </article>
+        <article class="card">
+            <img class="card-img-top" src="Images/ScrewDriver.jpg" alt="ScrewDriver" width="300" height="200">
+            <div class="card-body">
+                <h3 class="card-title">9 PCS Magnetic Screwdriver Set</h3>
+                <p class="card-text">This screwdriver set features non-slip soft grips. Rubber-based ergonomically non-skid and soft-grip handle for improved control and comfort.</p>
+            </div>
+            <div class="card-footer mt-auto">
+                <p class="card-text"><strong>$27.49</strong></p>
+                <a href="/view-details" class="btn btn-primary">View Details</a>
+                <a href="/add-to-cart" class="btn btn-secondary">Add to Cart</a>
+            </div>
+        </article>
+        <article class="card">
+            <img class="card-img-top" src="Images/ApplePen.jpg" alt="Apple Pen" width="300" height="200">
+            <div class="card-body">
+                <h3 class="card-title">Apple Pen (2nd Generation)</h3>
+                <p class="card-text">Apple Pencil (2nd generation) delivers pixel-perfect precision and industry-leading low latency, making it great for drawing, sketching, colouring, taking notes, marking up PDFs and more. And it’s as easy and natural to use as a pencil.</p>
+            </div>
+            <div class="card-footer mt-auto">
+                <p class="card-text"><strong>$319.00</strong></p>
+                <a href="/view-details" class="btn btn-primary">View Details</a>
+                <a href="/add-to-cart" class="btn btn-secondary">Add to Cart</a>
+            </div>
+        </article>
+    </div>
+</div>
+
+        {% for item in itemss %}
+        <div class="card">
+            <img class="card-img-top" src="{{ url_for('static', filename='statc/img/'+item.image) }}" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">{{ item.name }}</h4>
+                <p class="card-text">{{ item.description }}</p>
+                <p class="card-text"><strong>{{ item.price }}</strong></p>
+            </div>
+            <div class="card-footer"><a href= "{{ url_for('main.categories', itemid=item.id) }}" class="btn btn-primary">Categories</a></div>
         </div>
         {% endfor %}
     </div>
