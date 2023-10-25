@@ -6,7 +6,8 @@
 
     <div class="text-dark text-center">
         <div>
-            <p class="h3 text-dark mb-4">Select an item from below</p>
+            <p class="h3 text-dark mb-4">Select an item from below based on your selected category</p>
+
         </div>
     </div>
 
@@ -14,7 +15,7 @@
         <!-- each item is a bootstrap card -->
         {% for item in items%}
         <div class="card">
-            <img class="card-img-top" src="{{ url_for('static', filename='static/img/'+item.image) }}" alt="Card image">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/'+item.image) }}" alt="Card image">
             <div class="card-body">
                 <h4 class="card-title">{{ item.name }}</h4>
                 <p class="card-text">{{ item.description }}</p>

@@ -8,23 +8,23 @@ from . import db
 #I ADDED IN MOST OF THE INFORMATION BUT HAVENT ADD DESCRIPTION, YOU CAN ADD IT HERE. JUST REMEMBER TO ADD THE DESCRIPTION VARIABLE INTO THE CONSTRUCTOR IN THE MODEL.PY
 #JUST NEED TO ADD IN DESCRIPTIONS THE 
 t1 = Item(image="t_AirPods.jpg",name="AirPods Pro 2", price=300.00, category="Electronics", itemid= 1,
-          itemdescription="")
+          itemdescription="to", extra_details="")
 t2 = Item(image="t_CASIO Calculator.jpg",name="CASIO fx-991ES PLUS", price=59.39, category="Office Supplies", itemid= 2,
-          itemdescription="")
+          itemdescription="", extra_details="xx")
 t3 = Item(image="t_ScrewDriver.jpg",name="9 PCS Magnetic Screwdriver Set", price=27.49, category="Hardware", itemid= 3,
-          itemdescription="")
+          itemdescription="", extra_details="")
 t4 = Item(image="t_ApplePen.jpg",name="Apple Pen", price=319.00, category="Electronics", itemid= 4,
-          itemdescription="")
+          itemdescription="", extra_details="")
 t5 = Item(image="t_OpenRun.jpg",name="Shokz OpenRun Bone Conductor Headphones", price=219.00, category="Earphones", itemid= 5,
-          itemdescription="")
+          itemdescription="", extra_details="")
 t6 = Item(image="t_LOck.jpg",name="ORIA Combination Lock", price=14.99, category="Office Supplies", itemid= 6,
-          itemdescription="")
+          itemdescription="", extra_details="")
 t7 = Item(image="t_AppleCable.jpg",name="Apple USB-C to Lightning Cable", price=29.00, category="Electronics", itemid= 7,
-          itemdescription="")
+          itemdescription="", extra_details="")
 t8 = Item(image="t_SanDisk.jpg",name="SanDisk 2TB SSD", price=214.99, category="Storage Device", itemid= 8,
-          itemdescription="")
+          itemdescription="", extra_details="")
 
-
+# once done to reflect in admin
 main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
@@ -41,7 +41,7 @@ def itembycategory(itemcategory):
     #SENDING A ARRAY OF ITEMS WITH THE CATEGORY MATCHING THE SPECIFIED CATEGORY
     return render_template('categories.html', items = items_category)
 
-# Referred to as "Basket" to the user
+# Referred to as "Cart" to the user
 @main_bp.route('/order', methods=['POST','GET'])
 def order():
     item_id = request.values.get('item_id')
@@ -147,12 +147,10 @@ def search():
 
     items = Item.query.filter(Item.description.like(search)).all()
 
-    return render_template('items.html', items = items)
+    return render_template('categories.html', items = items)
 
-#ADDED A BLUEPRINT FOR THE ITEMDETAILS PAGE
+#ADDED A BLUEPRINT FOR THE ITEMDETAILS PAGE # items/1 - for airpods etc. 
 @main_bp.route('/items/<int:itemid>')
 def itemdetails(itemid):
     item = Item.query.filter(Item.id == itemid)
     return render_template('itemdetails.html', item = item)
-
-# CREATE A BLUEPRINT FOR THE ITEMDETAILPAGE HERE #######################################################################################

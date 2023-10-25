@@ -35,13 +35,6 @@
                 </article>
 
             </div>
-            <div class="col-md-6">
-                <article>
-                    <h2>Affordable selections</h2>
-                    <p>We have <span> great prices and offers </span> all year round!</p>
-                    <p>Click <a href="discounts.html">here</a> for more information.</p>
-                </article>
-            </div>
         </div>
         <!-- Horizontal Rule -->
         <hr>
@@ -61,19 +54,19 @@
 <div class="container-fluid">
     <div class="card-deck">
         <article class="card">
-            <img class="card-img-top" src="Images/AirPods.jpg" alt="AirPods Pro (2nd Generation) 1" width="300" height="200">
+            <img class="card-img-top" src="{{url_for('static', filename='img/AirPods.jpg')}};" alt="AirPods Pro (2nd Generation) 1" width="300" height="200">
             <div class="card-body">
                 <h3 class="card-title">AirPods Pro (2nd Generation)</h3>
                 <p class="card-text">The Apple AirPods Pro (2nd generation) modestly improve upon the first-generation AirPods Pro and feature the same iconic look.</p>
             </div>
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$300.00</strong></p>
-                <a href="/view-details" class="btn btn-primary">View Details</a>
-                <a href="/add-to-cart" class="btn btn-secondary">Add to Cart</a>
+                <a href="{{ url_for (items/1)}}" class="btn btn-primary">View Details</a>
+                <a href="{{ url_for ('order')}}" class="btn btn-secondary">Add to Cart</a>
             </div>
         </article>
         <article class="card">
-            <img class="card-img-top" src="Images/CASIO Calculator.jpg" alt="CASIO Calculator" width="300" height="200">
+            <img class="card-img-top" src="{{url_for('static', filename='img/CASIO Calculator.jpg')}};" alt="CASIO Calculator" width="300" height="200">
             <div class="card-body">
                 <h3 class="card-title">CASIO fx-991ES PLUS</h3>
                 <p class="card-text">
@@ -82,46 +75,46 @@
             </div>
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$56.39</strong></p>
-                <a href="/view-details" class="btn btn-primary">View Details</a>
-                <a href="/add-to-cart" class="btn btn-secondary">Add to Cart</a>
+                <a href="{{ url_for items/2}}" class="btn btn-primary">View Details</a>
+                <a href="{{ url_for ('order')}}" class="btn btn-secondary">Add to Cart</a>
             </div>
         </article>
         <article class="card">
-            <img class="card-img-top" src="Images/ScrewDriver.jpg" alt="ScrewDriver" width="300" height="200">
+            <img class="card-img-top" src="{{url_for('static', filename='img/ScrewDriver.jpg')}};" alt="ScrewDriver" width="300" height="200">
             <div class="card-body">
                 <h3 class="card-title">9 PCS Magnetic Screwdriver Set</h3>
                 <p class="card-text">This screwdriver set features non-slip soft grips. Rubber-based ergonomically non-skid and soft-grip handle for improved control and comfort.</p>
             </div>
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$27.49</strong></p>
-                <a href="/view-details" class="btn btn-primary">View Details</a>
-                <a href="/add-to-cart" class="btn btn-secondary">Add to Cart</a>
+                <a href="{{ url_for items/3}}" class="btn btn-primary">View Details</a>
+                <a href="{{ url_for ('order')}}" class="btn btn-secondary">Add to Cart</a>
             </div>
         </article>
         <article class="card">
-            <img class="card-img-top" src="Images/ApplePen.jpg" alt="Apple Pen" width="300" height="200">
+            <img class="card-img-top" src="{{url_for('static', filename='img/ApplePen.jpg')}};" alt="Apple Pen" width="300" height="200">
             <div class="card-body">
                 <h3 class="card-title">Apple Pen (2nd Generation)</h3>
                 <p class="card-text">Apple Pencil (2nd generation) delivers pixel-perfect precision and industry-leading low latency, making it great for drawing, sketching, colouring, taking notes, marking up PDFs and more. And it’s as easy and natural to use as a pencil.</p>
             </div>
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$319.00</strong></p>
-                <a href="/view-details" class="btn btn-primary">View Details</a>
-                <a href="/add-to-cart" class="btn btn-secondary">Add to Cart</a>
+                <a href="{{ url_for items/4}}" class="btn btn-primary">View Details</a>
+                <a href="{{ url_for ('order')}}" class="btn btn-secondary">Add to Cart</a>
             </div>
         </article>
     </div>
 </div>
 
-        {% for item in itemss %}
+        {% for item in items %}
         <div class="card">
-            <img class="card-img-top" src="{{ url_for('static', filename='statc/img/'+item.image) }}" alt="Card image">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/'+item.image) }}" alt="Card image">
             <div class="card-body">
                 <h4 class="card-title">{{ item.name }}</h4>
                 <p class="card-text">{{ item.description }}</p>
                 <p class="card-text"><strong>{{ item.price }}</strong></p>
             </div>
-            <div class="card-footer"><a href= "{{ url_for('main.categories', itemid=item.id) }}" class="btn btn-primary">Categories</a></div>
+            <div class="card-footer"><a href= "{{ url_for items/items.item_category }}" class="btn btn-primary">Categories</a></div>
         </div>
         {% endfor %}
     </div>

@@ -28,46 +28,63 @@
         <!-- Colours https://getbootstrap.com/docs/4.0/utilities/colors/ -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">SM LoFi</a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="container-fluid">
                  <div class="dropdown">
-            <a class="nav-item text-light nav-link dropdown-toggle" data-toggle="dropdown" id="bookDropdown" aria-haspopup="true" aria-expanded="false" href="#">Categories</a>
-            <div class="dropdown-menu" aria-labelledby="bookDropdown">
-                <a class="dropdown-item" href="#">Categories</a>
+                <a class="nav-item text-light nav-link dropdown-toggle" data-toggle="dropdown" id="bookDropdown" aria-haspopup="true" aria-expanded="false" href="#">List of Categories</a>
+                <div class="dropdown-menu" aria-labelledby="bookDropdown">
+                <a class="dropdown-item" href="{{url_for('main.items/Electronics')}}">Electronics</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Trending</a>
+                <a class="dropdown-item" href="{{url_for('main.items/Office Supplies')}}">Office Supply</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">New Releases</a>
+                <a class="dropdown-item" href="{{url_for('main.items/Hardware')}}">Hardware</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{url_for('main.items/Earphone')}}">Earphone</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{url_for('main.items/Storage Device')}}">Storage Device</a>
             </div>
+
             <a class="navbar-brand" href="#" id="logo"><img src="static/img/gadget.png" alt="icon"></a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span><i class="fa-solid fa-bars" style="color: white; font-size: 23px;"></i></span>
                 </button>
+
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{{url_for('main.index')}}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#about">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('main.index', _anchor='items_anchor')}}"> All Items</a>
+                            <a class="nav-link" href="{{url_for('main.categories')}}">Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('main.order')}}> Cart </a>
+                            <a class="nav-link" href="{{url_for('main.order')}}"> Cart </a>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0 ml-auto">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+
+                    <li class="nav-item">
+                        <!-- search box -->
+                        <form class="form-inline my-2 my-lg-0 ml-5">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-black btn btn-secondary btn-s my-0 ml-1"
+                                type="submit">Search</button>
+                        </form>
+                    </li>
+                   
                 </div>
             </div>
         </nav>
-        <div class="jumbotron jumbotron-fluid card card-image" style="background-image: url('img folder/hero\ banner.jpg');">
+
+        <div class="jumbotron jumbotron-fluid card card-image" style="background-image: url('static/img/xxxx.jpg');"> # to add logo 
             <div class="row justify-content-center mt-5 pb-4">
                 <div class="col-md-8">
                     <div class="jumbotron shadow py-4 mb-5">
@@ -106,7 +123,6 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-logo text-center"><img src="./images/logo.png" alt=""></div>
         <div class="text-center mt-2">
             <a href="shipping-policy.html" class="btn btn-secondary">Shipping Policy</a>
         </div>
@@ -114,7 +130,7 @@
             <a href="termsandconditions.html" class="btn btn-secondary">Terms & Conditions</a>
         </div>
         <div class="text-center py-2 bg-secondary">
-            <span class="text-light">Made by Marco - N11781581 - IFN557 - FRONT END PROTOTYPE &copy; October 2023</span>
+            <span class="text-light">Made by SM - IFN 557 - ASSIGNMENT 2 - GROUP &copy; October 2023</span>
         </div>
     </footer>
     <!-- Footer -->
