@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, url_for, request, session, flash, redirect
-from .models import City, Tour, Order, Item, Category
+from .models import Order, Item
 from datetime import datetime
 from .forms import CheckoutForm
 from . import db
@@ -56,7 +56,7 @@ def order():
 
     # create new order if needed
     if order is None:
-        order = Order(status = False, firstname='', surname='', email='', phone='', totalcost=0, date=datetime.now(), item = Item())
+        order = Order(status = False, firstname='', surname='', email='', phone='', totalcost=0, date=datetime.now(), item = '')
         try:
             db.session.add(order)
             db.session.commit()

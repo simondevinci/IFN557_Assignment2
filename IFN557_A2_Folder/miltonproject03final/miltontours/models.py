@@ -12,12 +12,15 @@ class Item(db.Model):
     extra_details = db.Column(db.String(300), nullable=False)
     item_category = db.Column(db.String(64), nullable = False)
 
-    def __init__ (self, image, name, price, category, itemid, itemdescription):
+    def __init__ (self, image, name, price, category, itemid, itemdescription, extradetails):
         self.image = image
         self.name = name
         self.price = price
         self.item_category = category
         self.id = itemid
+        self.description = itemdescription
+        self.extra_details = extradetails
+
 
     def __repr__(self):
         return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}\nPrice: {self.price}\nCategory: {self.item_category}"
@@ -34,7 +37,7 @@ class Order(db.Model):
     totalcost = db.Column(db.Float)
     date = db.Column(db.DateTime)
     shippingdetails = db.Column(db.String(64))
-    item = db.Column(db.Item)
+    item = db.Column(db.String(64))
 
     def __init__ (self, item):
         self.item = item
