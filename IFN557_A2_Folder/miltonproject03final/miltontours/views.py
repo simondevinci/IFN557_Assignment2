@@ -8,21 +8,21 @@ from . import db
 #I ADDED IN MOST OF THE INFORMATION BUT HAVENT ADD DESCRIPTION, YOU CAN ADD IT HERE. JUST REMEMBER TO ADD THE DESCRIPTION VARIABLE INTO THE CONSTRUCTOR IN THE MODEL.PY
 #JUST NEED TO ADD IN DESCRIPTIONS THE 
 t1 = Item(image="t_AirPods.jpg",name="AirPods Pro 2", price=300.00, category="Electronics", itemid= 1,
-          itemdescription="to", extra_details="")
+          itemdescription="to", extradetails="")
 t2 = Item(image="t_CASIO Calculator.jpg",name="CASIO fx-991ES PLUS", price=59.39, category="Office Supplies", itemid= 2,
-          itemdescription="", extra_details="xx")
+          itemdescription="", extradetails="")
 t3 = Item(image="t_ScrewDriver.jpg",name="9 PCS Magnetic Screwdriver Set", price=27.49, category="Hardware", itemid= 3,
-          itemdescription="", extra_details="")
+          itemdescription="", extradetails="")
 t4 = Item(image="t_ApplePen.jpg",name="Apple Pen", price=319.00, category="Electronics", itemid= 4,
-          itemdescription="", extra_details="")
+          itemdescription="", extradetails="")
 t5 = Item(image="t_OpenRun.jpg",name="Shokz OpenRun Bone Conductor Headphones", price=219.00, category="Earphones", itemid= 5,
-          itemdescription="", extra_details="")
+          itemdescription="", extradetails="")
 t6 = Item(image="t_LOck.jpg",name="ORIA Combination Lock", price=14.99, category="Office Supplies", itemid= 6,
-          itemdescription="", extra_details="")
+          itemdescription="", extradetails="")
 t7 = Item(image="t_AppleCable.jpg",name="Apple USB-C to Lightning Cable", price=29.00, category="Electronics", itemid= 7,
-          itemdescription="", extra_details="")
+          itemdescription="", extradetails="")
 t8 = Item(image="t_SanDisk.jpg",name="SanDisk 2TB SSD", price=214.99, category="Storage Device", itemid= 8,
-          itemdescription="", extra_details="")
+          itemdescription="", extradetails="")
 
 # once done to reflect in admin
 main_bp = Blueprint('main', __name__)
