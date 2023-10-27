@@ -71,6 +71,7 @@ def itembycategory(category_id):
     #SENDING A ARRAY OF ITEMS WITH THE CATEGORY MATCHING THE SPECIFIED CATEGORY
     return render_template('categories.html', items = items_category)
 
+
 # Referred to as "Cart" to the user
 @main_bp.route('/order', methods=['POST','GET'])
 def order():

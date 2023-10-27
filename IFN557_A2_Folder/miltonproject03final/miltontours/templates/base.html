@@ -33,21 +33,23 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="container-fluid">
+           <!-- <div class="container-fluid">
                  <div class="dropdown">
                 <a class="nav-item text-light nav-link dropdown-toggle" data-toggle="dropdown" id="bookDropdown" aria-haspopup="true" aria-expanded="false" href="#">List of Categories</a>
                 <div class="dropdown-menu" aria-labelledby="bookDropdown">
-                <a class="dropdown-item" href="{{url_for('main.categories/1')}}">Electronics</a>
+                <a class="dropdown-item" href="{{ url_for('main.itembycategory', category_id=1) }}">Electronics</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{url_for('main.categories/2')}}">Office Supply</a>
+                <a class="dropdown-item" href="{{ url_for('main.itembycategory', category_id=2) }}">Office Supply</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{url_for('main.categories/3')}}">Hardware</a>
+                <a class="dropdown-item" href="{{ url_for('main.itembycategory', category_id=3) }}">Hardware</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{url_for('main.categories/4')}}">Earphone</a>
+                <a class="dropdown-item" href="{{ url_for('main.itembycategory', category_id=4) }}">Earphone</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{url_for('main.categories/5')}}">Storage Device</a>
+                <a class="dropdown-item" href="{{ url_for('main.itembycategory', category_id=5) }}">Storage Device</a>
             </div>
-
+            
+            checked views.py on route and endpont, seems to be consistent but still cant run somehow, for time why dont i -->
+            
             <a class="navbar-brand" href="#" id="logo"><img src="static/img/gadget.png" alt="icon"></a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
