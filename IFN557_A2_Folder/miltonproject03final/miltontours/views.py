@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, url_for, request, session, flash, redirect
-from .models import Order, Item, Category
+from .models import Order, Item #Category
 from datetime import datetime
 from .forms import CheckoutForm
 from . import db
@@ -25,11 +25,11 @@ t8 = Item(image="t_SanDisk.jpg",name="SanDisk 2TB SSD", price=214.99, category="
           itemdescription="", extradetails="", categoryid= 5)
 
 
-c1 = Category(name= "Electronics", description="")
-c2 = Category(name= "Office Supplies", description="")
-c3 = Category(name= "Hardware", description="")
-c4 = Category(name= "Earphones", description="")
-c5 = Category(name= "Storage Device", description="")
+#c1 = Category(name= "Electronics", description="")
+#c2 = Category(name= "Office Supplies", description="")
+#c3 = Category(name= "Hardware", description="")
+#c4 = Category(name= "Earphones", description="")
+#c5 = Category(name= "Storage Device", description="")
 
 try:
     db.session.add(c1)
