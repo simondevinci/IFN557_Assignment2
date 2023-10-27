@@ -61,7 +61,7 @@
             </div>
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$300.00</strong></p>
-                <a href="{{ url_for('items', item_id=1)}}" class="btn btn-primary">View Details</a>
+                <a href="{{ url_for('main.itemdetails', itemid=1)}}" class="btn btn-primary">View Details</a>
                 <a href="{{ url_for ('main.order')}}" class="btn btn-secondary">Add to Cart</a>
             </div>
         </article>
@@ -75,7 +75,7 @@
             </div>
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$56.39</strong></p>
-                <a href="{{ url_for('items', item_id=2)}}" class="btn btn-primary">View Details</a>
+                <a href="{{ url_for('main.itemdetails', itemid=2)}}" class="btn btn-primary">View Details</a>
                 <a href="{{ url_for ('main.order')}}" class="btn btn-secondary">Add to Cart</a>
             </div>
         </article>
@@ -87,8 +87,7 @@
             </div>
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$27.49</strong></p>
-                <a href="{{ url_for('items', item_id=3)}}" class="btn btn-primary">View Details</a>
-                <a href="{{ url_for('items', item_id=2)}}" class="btn btn-primary">View Details</a>
+                <a href="{{ url_for('main.itemdetails', itemid=3)}}" class="btn btn-primary">View Details</a>
                 <a href="{{ url_for ('main.order')}}" class="btn btn-secondary">Add to Cart</a>
             </div>
         </article>
@@ -100,7 +99,7 @@
             </div>
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$319.00</strong></p>
-                <a href="{{ url_for('items', item_id=4)}}" class="btn btn-primary">View Details</a>
+                <a href="{{ url_for('main.itemdetails', itemid=4)}}" class="btn btn-primary">View Details</a>
                 <a href="{{ url_for ('main.order')}}" class="btn btn-secondary">Add to Cart</a>
             </div>
         </article>
@@ -114,8 +113,17 @@
                 <h4 class="card-title">{{ item.name }}</h4>
                 <p class="card-text">{{ item.description }}</p>
                 <p class="card-text"><strong>{{ item.price }}</strong></p>
+                <a href= "{{ url_for('items', item_id=item.id) }}" class="btn btn-primary">View Details</a>
+
             </div>
-            <div class="card-footer"><a href= "{{ url_for('items', item_id=item.id) }}" class="btn btn-primary">Categories</a></div>
+            <div class="card-footer">
+                <form action="{{ url_for('main.order') }}">
+                    <input type="hidden" id="item_id" name="item_id" value="{{ item.id }}">
+                    <input class="btn btn-primary" type="submit" value="Add to Cart">
+                </form>
+            
+            </div>
+
         </div>
         {% endfor %}
     </div>
