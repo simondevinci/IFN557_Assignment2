@@ -44,7 +44,14 @@ class Order(db.Model):
     #item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
     #item = relationship('Item')
     
-    def __init__ (self, item):
+    def __init__ (self, status, firstname, surname, email, phone, totalcost, date, item):
+        self.status = status
+        self.firstname = firstname
+        self.surname = surname
+        self.email = email
+        self.phone = phone
+        self.total_cost = totalcost
+        self.date = date
         self.item = items
     
     def __repr__(self):
