@@ -21,13 +21,13 @@
             </div>
             <div class="card-footer">
                 <form action="{{ url_for('main.order') }}">
-                    <input type="hidden" id="tour_id" name="tour_id" value="{{ tour.id }}">
+                    <input type="hidden" id="_id" name="tour_id" value="{{ tour.id }}">
                     <input class="btn btn-primary" type="submit" value="Add to Basket">
                 </form>
             </div>
         </div>
         {% endfor %}
-    </div>
+    </div>      
 
 </section>
 {% endblock %}

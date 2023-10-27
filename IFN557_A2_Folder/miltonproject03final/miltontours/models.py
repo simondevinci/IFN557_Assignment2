@@ -59,8 +59,8 @@ class Category(db.Model):
     #items = relationship('Item', back_populates='category')
 
     def __init__(self, name, description):
-        #self.name = name
-        #self.description = description
+        self.name = name
+        self.description = description
 
-    #def __repr__(self):
-        #return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}"
+    def __repr__(self):
+        return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}"
