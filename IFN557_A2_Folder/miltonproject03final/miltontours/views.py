@@ -7,22 +7,22 @@ from . import db
 # ADD DATABASE PART HERE
 #I ADDED IN MOST OF THE INFORMATION BUT HAVENT ADD DESCRIPTION, YOU CAN ADD IT HERE. JUST REMEMBER TO ADD THE DESCRIPTION VARIABLE INTO THE CONSTRUCTOR IN THE MODEL.PY
 #JUST NEED TO ADD IN DESCRIPTIONS THE 
-t1 = Item(image="t_AirPods.jpg",name="AirPods Pro 2", price=300.00, item_category="Electronics", id= 1,
-          description="to", extra_details="")
-t2 = Item(image="t_CASIO Calculator.jpg",name="CASIO fx-991ES PLUS", price=59.39, item_category="Office Supplies", id= 2,
-          description="", extra_details="")
-t3 = Item(image="t_ScrewDriver.jpg",name="9 PCS Magnetic Screwdriver Set", price=27.49, item_category="Hardware", id= 3,
-          description="", extra_details="")
-t4 = Item(image="t_ApplePen.jpg",name="Apple Pen", price=319.00, item_category="Electronics", id= 4,
-          description="", extra_details="")
-t5 = Item(image="t_OpenRun.jpg",name="Shokz OpenRun Bone Conductor Headphones", price=219.00, item_category="Earphones", id= 5,
-          description="", extra_details="")
-t6 = Item(image="t_LOck.jpg",name="ORIA Combination Lock", price=14.99, item_category="Office Supplies", id= 6,
-          description="", extra_details="")
-t7 = Item(image="t_AppleCable.jpg",name="Apple USB-C to Lightning Cable", price=29.00, item_category="Electronics", id= 7,
-          description="", extra_details="")
-t8 = Item(image="t_SanDisk.jpg",name="SanDisk 2TB SSD", price=214.99, item_category="Storage Device", id= 8,
-          description="", extra_details="")
+t1 = Item(image="t_AirPods.jpg",name="AirPods Pro 2", price=300.00, category="Electronics", itemid= 1,
+          itemdescription="to", extradetails="")
+t2 = Item(image="t_CASIO Calculator.jpg",name="CASIO fx-991ES PLUS", price=59.39, category="Office Supplies", itemid= 2,
+          itemdescription="", extradetails="")
+t3 = Item(image="t_ScrewDriver.jpg",name="9 PCS Magnetic Screwdriver Set", price=27.49, category="Hardware", itemid= 3,
+          itemdescription="", extradetails="")
+t4 = Item(image="t_ApplePen.jpg",name="Apple Pen", price=319.00, category="Electronics", itemid= 4,
+          itemdescription="", extradetails="")
+t5 = Item(image="t_OpenRun.jpg",name="Shokz OpenRun Bone Conductor Headphones", price=219.00, category="Earphones", itemid= 5,
+          itemdescription="", extradetails="")
+t6 = Item(image="t_LOck.jpg",name="ORIA Combination Lock", price=14.99, category="Office Supplies", itemid= 6,
+          itemdescription="", extradetails="")
+t7 = Item(image="t_AppleCable.jpg",name="Apple USB-C to Lightning Cable", price=29.00, category="Electronics", itemid= 7,
+          itemdescription="", extradetails="")
+t8 = Item(image="t_SanDisk.jpg",name="SanDisk 2TB SSD", price=214.99, category="Storage Device", itemid= 8,
+          itemdescription="", extradetails="")
 
 try:
     db.session.add(t1)
