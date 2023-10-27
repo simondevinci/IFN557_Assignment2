@@ -10,11 +10,12 @@ class Item(db.Model):
     price = db.Column(db.Float, nullable=False)
     extra_details = db.Column(db.String(300), nullable=False)
     item_category = db.Column(db.String(64), nullable = False)
+    item_category_id = db.Column(db.Integer, nullable = False)
 
     #category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
     #category = relationship('Category', back_populates='items')
 
-    def __init__ (self, image, name, price, category, itemid, itemdescription, extradetails):
+    def __init__ (self, image, name, price, category, itemid, itemdescription, extradetails, categoryid):
         self.image = image
         self.name = name
         self.price = price
@@ -22,6 +23,7 @@ class Item(db.Model):
         self.id = itemid
         self.description = itemdescription
         self.extra_details = extradetails
+        self.item_category_id = categoryid
 
     def __repr__(self):
         return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}\nPrice: {self.price}\nCategory: {self.item_category}"

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, url_for, request, session, flash, redirect
-from .models import Order, Item
+from .models import Order, Item, Category
 from datetime import datetime
 from .forms import CheckoutForm
 from . import db
@@ -8,21 +8,38 @@ from . import db
 #I ADDED IN MOST OF THE INFORMATION BUT HAVENT ADD DESCRIPTION, YOU CAN ADD IT HERE. JUST REMEMBER TO ADD THE DESCRIPTION VARIABLE INTO THE CONSTRUCTOR IN THE MODEL.PY
 #JUST NEED TO ADD IN DESCRIPTIONS THE 
 t1 = Item(image="t_AirPods.jpg",name="AirPods Pro 2", price=300.00, category="Electronics", itemid= 1,
-          itemdescription="to", extradetails="")
+          itemdescription="to", extradetails="", categoryid= 1)
 t2 = Item(image="t_CASIO Calculator.jpg",name="CASIO fx-991ES PLUS", price=59.39, category="Office Supplies", itemid= 2,
-          itemdescription="", extradetails="")
+          itemdescription="", extradetails="", categoryid= 2)
 t3 = Item(image="t_ScrewDriver.jpg",name="9 PCS Magnetic Screwdriver Set", price=27.49, category="Hardware", itemid= 3,
-          itemdescription="", extradetails="")
+          itemdescription="", extradetails="", categoryid= 3)
 t4 = Item(image="t_ApplePen.jpg",name="Apple Pen", price=319.00, category="Electronics", itemid= 4,
-          itemdescription="", extradetails="")
+          itemdescription="", extradetails="", categoryid= 1)
 t5 = Item(image="t_OpenRun.jpg",name="Shokz OpenRun Bone Conductor Headphones", price=219.00, category="Earphones", itemid= 5,
-          itemdescription="", extradetails="")
+          itemdescription="", extradetails="", categoryid= 4)
 t6 = Item(image="t_LOck.jpg",name="ORIA Combination Lock", price=14.99, category="Office Supplies", itemid= 6,
-          itemdescription="", extradetails="")
+          itemdescription="", extradetails="", categoryid= 2)
 t7 = Item(image="t_AppleCable.jpg",name="Apple USB-C to Lightning Cable", price=29.00, category="Electronics", itemid= 7,
-          itemdescription="", extradetails="")
+          itemdescription="", extradetails="", categoryid= 1)
 t8 = Item(image="t_SanDisk.jpg",name="SanDisk 2TB SSD", price=214.99, category="Storage Device", itemid= 8,
-          itemdescription="", extradetails="")
+          itemdescription="", extradetails="", categoryid= 5)
+
+
+c1 = Category(name= "Electronics", description="")
+c2 = Category(name= "Office Supplies", description="")
+c3 = Category(name= "Hardware", description="")
+c4 = Category(name= "Earphones", description="")
+c5 = Category(name= "Storage Device", description="")
+
+try:
+    db.session.add(c1)
+    db.session.add(c2)
+    db.session.add(c3)
+    db.session.add(c4)
+    db.session.add(c5)
+    db.session.commit()
+except:
+    'There was an issue adding categories in dbseed function'
 
 try:
     db.session.add(t1)
@@ -35,7 +52,7 @@ try:
     db.session.add(t8)
     db.session.commit()
 except:
-    'There was an issue adding a tour in dbseed function'
+    'There was an issue adding a items in dbseed function'
 
 # once done to reflect in admin
 main_bp = Blueprint('main', __name__)
@@ -48,9 +65,9 @@ def index():
 
 
 #DISPLAY ITEM CATEGORY IF IT EXIST *****************************************************************************
-@main_bp.route('/items/<string:itemcategory>')
-def itembycategory(itemcategory):
-    items_category = Item.query.filter(Item.item_category==itemcategory)
+@main_bp.route('/items/<int:category_id>')
+def itembycategory(category_id):
+    items_category = Item.query.filter(Item.item_category_id==category_id)
     #SENDING A ARRAY OF ITEMS WITH THE CATEGORY MATCHING THE SPECIFIED CATEGORY
     return render_template('categories.html', items = items_category)
 
