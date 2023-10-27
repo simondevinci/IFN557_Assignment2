@@ -54,19 +54,19 @@
 <div class="container-fluid">
     <div class="card-deck">
         <article class="card">
-            <img class="card-img-top" src="{{url_for('static', filename='img/AirPods.jpg')}};" alt="AirPods Pro (2nd Generation) 1" width="300" height="200">
+            <img class="card-img-top" src="{{url_for('static', filename='img/AirPods.jpg')}}" alt="AirPods Pro (2nd Generation) 1" width="300" height="200">
             <div class="card-body">
                 <h3 class="card-title">AirPods Pro (2nd Generation)</h3>
                 <p class="card-text">The Apple AirPods Pro (2nd generation) modestly improve upon the first-generation AirPods Pro and feature the same iconic look.</p>
             </div>
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$300.00</strong></p>
-                <a href="{{ url_for (items/1)}}" class="btn btn-primary">View Details</a>
+                <a href="{{ url_for('items', item_id=1)}}" class="btn btn-primary">View Details</a>
                 <a href="{{ url_for ('main.order')}}" class="btn btn-secondary">Add to Cart</a>
             </div>
         </article>
         <article class="card">
-            <img class="card-img-top" src="{{url_for('static', filename='img/CASIO Calculator.jpg')}};" alt="CASIO Calculator" width="300" height="200">
+            <img class="card-img-top" src="{{url_for('static', filename='img/CASIO Calculator.jpg')}}" alt="CASIO Calculator" width="300" height="200">
             <div class="card-body">
                 <h3 class="card-title">CASIO fx-991ES PLUS</h3>
                 <p class="card-text">
@@ -75,7 +75,7 @@
             </div>
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$56.39</strong></p>
-                <a href="{{ url_for items/2}}" class="btn btn-primary">View Details</a>
+                <a href="{{ url_for('items', item_id=2)}}" class="btn btn-primary">View Details</a>
                 <a href="{{ url_for ('main.order')}}" class="btn btn-secondary">Add to Cart</a>
             </div>
         </article>
@@ -87,19 +87,20 @@
             </div>
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$27.49</strong></p>
-                <a href="{{ url_for items/3}}" class="btn btn-primary">View Details</a>
+                <a href="{{ url_for('items', item_id=3)}}" class="btn btn-primary">View Details</a>
+<a href="{{ url_for('items', item_id=2)}}" class="btn btn-primary">View Details</a>
                 <a href="{{ url_for ('main.order')}}" class="btn btn-secondary">Add to Cart</a>
             </div>
         </article>
         <article class="card">
-            <img class="card-img-top" src="{{url_for('static', filename='img/ApplePen.jpg')}};" alt="Apple Pen" width="300" height="200">
+            <img class="card-img-top" src="{{url_for('static', filename='img/ApplePen.jpg')}}" alt="Apple Pen" width="300" height="200">
             <div class="card-body">
                 <h3 class="card-title">Apple Pen (2nd Generation)</h3>
                 <p class="card-text">Apple Pencil (2nd generation) delivers pixel-perfect precision and industry-leading low latency, making it great for drawing, sketching, colouring, taking notes, marking up PDFs and more. And it’s as easy and natural to use as a pencil.</p>
             </div>
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$319.00</strong></p>
-                <a href="{{ url_for items/4}}" class="btn btn-primary">View Details</a>
+                <a href="{{ url_for('items', item_id=4)}}" class="btn btn-primary">View Details</a>
                 <a href="{{ url_for ('main.order')}}" class="btn btn-secondary">Add to Cart</a>
             </div>
         </article>
@@ -114,7 +115,7 @@
                 <p class="card-text">{{ item.description }}</p>
                 <p class="card-text"><strong>{{ item.price }}</strong></p>
             </div>
-            <div class="card-footer"><a href= "{{ url_for items/items.item_category }}" class="btn btn-primary">Categories</a></div>
+            <div class="card-footer"><a href= "{{ url_for('items', item_id=item.id) }}" class="btn btn-primary">Categories</a></div>
         </div>
         {% endfor %}
     </div>
