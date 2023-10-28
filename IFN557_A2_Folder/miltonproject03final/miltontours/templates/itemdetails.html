@@ -9,25 +9,37 @@
             <p class="h3 text-dark mb-4">Item Details</p>
         </div>
     </div>
+    {% for item in item %}
+    <section>
+        <div id="ItemTittle">
+            <h2>{{ item.name }}</h2>
+        </div>
 
-    <div class="card-columns">
-        <!-- each item is a bootstrap card --> <!-- -->
-
-        <div class="card">
-            <img class="card-img-top" src="{{ url_for('static', filename='img/'+item.image) }}" alt="Card image">
-            <div class="card-body">
-                <h4 class="card-title">{{ item.name }}</h4>
-                <p class="card-text">{{ item.description }}</p>
-                <p class="card-text">{{ item.price }}</p>
+        <div class="container">
+            <div class="image">
+                <img src="{{ url_for('static', filename='img/'+item.image) }}" alt="AirPods Pro (2nd Generation)">
             </div>
-            <div class="card-footer">
+            <div class="ItemDescription">
+                <p>
+                    <p>{{ item.description }}</p>
+                    <b id="About" style="left: auto;">Item Price</b>
+                    <p>{{ item.price }}</p>
+                    <b id="About" style="left: auto;">Extra Details</b>
+                    <p>{{ item.extra_details }}</p>
+                </p>
+            </div>
+            <div class="footer">
                 <form action="{{ url_for('main.order') }}">
                     <input type="hidden" id="item_id" name="item_id" value="{{ item.id }}">
                     <input class="btn btn-primary" type="submit" value="Add to Cart">
                 </form>
             </div>
         </div>
-    </div>
+    </section>
+
+
+
+    {% endfor %}
 
 </section>
 {% endblock %}
