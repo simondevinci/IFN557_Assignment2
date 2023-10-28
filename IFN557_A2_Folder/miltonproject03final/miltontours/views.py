@@ -158,7 +158,7 @@ def deleteorderitem():
         order = Order.query.get_or_404(session['order_id'])
         item_to_delete = Item.query.get(id)
         try:
-            order.item.remove(item_to_delete)
+            order.items.remove(item_to_delete)
             db.session.commit()
             return redirect(url_for('main.order'))
         except:
