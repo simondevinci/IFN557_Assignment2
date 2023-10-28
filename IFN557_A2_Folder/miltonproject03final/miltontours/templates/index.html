@@ -112,7 +112,13 @@
             <div class="card-body">
                 <h4 class="card-title">{{ item.name }}</h4>
                 <p class="card-text">{{ item.description }}</p>
+<<<<<<< Updated upstream
                 <p class="card-text"><strong>{{ item.price }}</strong></p>
+=======
+                <p class="card-text"><strong>{{"$%.2f"|format(item.price) }}</strong></p>
+                <a href= "{{ url_for('main.itemdetails', itemid=item.id) }}" class="btn btn-primary">View Details</a>
+
+>>>>>>> Stashed changes
             </div>
             <div class="card-footer">
                 <form action="{{ url_for('main.order') }}">
