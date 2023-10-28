@@ -48,11 +48,11 @@ def dbseed():
 #JUST NEED TO ADD IN DESCRIPTIONS 
 
       #adding categories into table
-      c1 = Category(name= "Electronics", description="")
-      c2 = Category(name= "Office Supplies", description="")
-      c3 = Category(name= "Hardware", description="")
-      c4 = Category(name= "Earphones", description="")
-      c5 = Category(name= "Storage Device", description="")
+      c1 = Category(name= "Electronics", description="Browse through our options of the latest and greatest home electronics to upgrade your tech devices")
+      c2 = Category(name= "Office Supplies", description="Useful tools when specifically made for an IT professional in mind")
+      c3 = Category(name= "Hardware", description="Need to fix something? Get our DIY tools that come in handy when you're in a bind")
+      c4 = Category(name= "Earphones", description="Our selection of the best in ear headphones around")
+      c5 = Category(name= "Storage Device", description="Not enough storage on your device? We got you caovered")
 
       try:
             db.session.add(c1)
@@ -69,52 +69,52 @@ def dbseed():
       # ADD ITEM INTO TABLE
       t1 = Item(itemcategoryid = c1.id, 
           name = 'AirPods Pro 2', 
-          description = '', 
+          description = 'The Apple AirPods Pro (2nd generation) modestly improve upon the first-generation AirPods Pro and feature the same iconic look.', 
           image = 't_AirPods.jpg', 
           price = 300.00, 
-          extra_details = '')
+          extra_details = 'IP54 dust, sweat and water resistant for AirPods Pro and MagSafe Charging Case.6',
       t2 = Item(itemcategoryid = c2.id, 
           name = 'CASIO fx-991ES PLUS', 
-          description = '', 
+          description = 'Really good form factor. Has all of the functions you need and then some. The case has unit conversions on the inside, which is neat.', 
           image = 't_CASIO Calsulator.jpg', 
           price = 59.39, 
-          extra_details = '')
+          extra_details = 'Product features: Non Programmable, Non Graphing, Number of Functions : 417',
       t3 = Item(itemcategoryid = c3.id, 
           name = '9 PCS Magnetic Screwdriver Set', 
-          description = '', 
+          description = 'This screwdriver set features non-slip soft grips. Rubber-based ergonomically non-skid and soft-grip handle for improved control and comfort.', 
           image = 't_ScrewDriver.jpg', 
           price = 27.49, 
-          extra_details = '')
+          extra_details = '4 Phillips + 5 Flat Head Screwdrivers + Storage Case.',
       t4 = Item(itemcategoryid = c1.id, 
           name = 'Apple Pen', 
-          description = '', 
+          description = 'Apple Pencil (2nd generation) delivers pixel-perfect precision and industry-leading low latency, making it great for drawing, sketching, colouring, taking notes, marking up PDFs and more. And its as easy and natural to use as a pencil.', 
           image = 't_ApplePen.jpg', 
           price = 319.00, 
-          extra_details = '')
+          extra_details = 'Length: 6.53 inches (166 mm), Diameter: 0.35 inch (8.9 mm), Weight: 0.73 ounce (20.7 grams), Connections, Bluetooth, Other Features, Magnetically attaches and pairs',
       t5 = Item(itemcategoryid = c4.id, 
           name = 'Shokz OpenRun Bone Conductor Headphones', 
-          description = '', 
+          description = 'Top selling model of Shokz. Now they have been updated with a quick-charge feature and re-named as OpenRun. A 10-minute quick charge gives you 1.5 hours of listening time so you can get on-the-go fast!', 
           image = 't_OpenRun.jpg', 
           price = 219.00, 
-          extra_details = '')
+          extra_details = 'IP67 Waterproof (Not for swimming), Lightweight + ComfortableLightweight + Comfortable, 8-Hour Battery Life + Quick Charge, 2-Year Warranty',
       t6 = Item(itemcategoryid = c2.id, 
           name = 'ORIA Combination Lock', 
-          description = '', 
+          description = 'Excellent design with Anti-rust, it is weather proof,light weight, fits through the holes of a lot of suitcases.', 
           image = 't_LOck.jpg', 
           price = 14.99, 
-          extra_details = '')
+          extra_details = 'Lock Type: Combination Lock Item Dimensions: LxWxH 5.12 x 3.94 x 1.97 inches Material: Steel and Zinc',
       t7 = Item(itemcategoryid = c1.id, 
           name = 'Apple USB-C to Lightning Cable', 
-          description = '', 
+          description ='Connect your device with Lightning connector to your USB-C  Thunderbolt 3 (USB-C)enabled device for syncing and charging, or to your USB-C enabled iPad for charging.', 
           image = 't_AppleCable.jpg', 
           price = 29.00, 
-          extra_details = '')
+          extra_details = 'Length: 1m',
       t8 = Item(itemcategoryid = c5.id, 
           name = 'SanDisk 2TB SSD', 
-          description = '', 
+          description = 'From the brand trusted by professional photographers worldwide, the SanDisk Extreme PRO Portable SSD provides powerful solid state performance in a rugged, dependable storage solution. Nearly 2x as fast as our previous generation!', 
           image = 't_SanDisk.jpg', 
           price = 214.99, 
-          extra_details = '')
+          extra_details = 'Capacity: 1TB/ 2TB, Interface: USB 3.2 Gen 2 x2, Connector: USB-C, Compatibility: USB 3.2 Gen 2x2 (20Gb/s), USB 3.0, USB 2.0, Dimensions (L x W x H): 110.26mm x 57.34mm x 10.22mm, Sequential Read Performance: 2000MB/s, Sequential Write Performance: 2000MB/s',
 
       try:
             db.session.add(t1)

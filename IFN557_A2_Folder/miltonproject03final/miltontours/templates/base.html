@@ -7,16 +7,59 @@
     <title>SM LoFi</title>
     <meta name="description" content="SnMLoFi">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-
     <!-- an example of using css alongside bootstrap -->
     <style>
         /* to place border around items in the shopping basket - orders.html */
         .my-row {
             border: 1px solid grey;
         }
+
+        <style>
+        /* to place border around items in the shopping basket - orders.html */
+        .my-row {
+            border: 1px solid grey;
+        }
+        #logo img {
+            max-width: 100%;
+            max-height: 100px;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+       
+        .navbar-nav .nav-link {
+            color: #000; /* Set the text color to black */
+        }
+
+        .jumbotron {
+            background-size: cover;
+            text-align: center;
+            padding: 100px 0;
+            color: #fff;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+        }
+
+        .footer a.btn {
+            margin: 5px;
+        }
+
+        .footer .text-light {
+            color: #fff;
+        }
+        
+        .card-img-top {
+            max-width: 100%;
+            max-height: 100%;
+        }
     </style>
+    
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -26,48 +69,36 @@
 
         <!--navbar creates a navigation bar -->
         <!-- Colours https://getbootstrap.com/docs/4.0/utilities/colors/ -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">SM LoFi</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src= "static/img/gadget.png" alt="SM LoFi Logo" width="30" height="30" class="d-inline-block align-top" alt="SM LoFi Logo">
+                SM LoFi
+            </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-           <div class="container-fluid">
-                 <div class="dropdown">
-                <a class="nav-item text-light nav-link dropdown-toggle" data-toggle="dropdown" id="bookDropdown" aria-haspopup="true" aria-expanded="false" href="#">List of Categories</a>
-                <div class="dropdown-menu" aria-labelledby="bookDropdown">
-                <a class="dropdown-item" href="{{ url_for('main.itembycategory', category_id=1) }}">Electronics</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ url_for('main.itembycategory', category_id=2) }}">Office Supply</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ url_for('main.itembycategory', category_id=3) }}">Hardware</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ url_for('main.itembycategory', category_id=4) }}">Earphone</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ url_for('main.itembycategory', category_id=5) }}">Storage Device</a>
+        
+            <div class="container-fluid">
+                <button class="nav-item text-light nav-link" onclick="window.location='{{ url_for('main.itembycategory', category_id=1) }}'">Electronics</button>
+                <button class="nav-item text-light nav-link" onclick="window.location='{{ url_for('main.itembycategory', category_id=2) }}'">Office Supply</button>
+                <button class="nav-item text-light nav-link" onclick="window.location='{{ url_for('main.itembycategory', category_id=3) }}'">Hardware</button>
+                <button class="nav-item text-light nav-link" onclick="window.location='{{ url_for('main.itembycategory', category_id=4) }}'">Earphone</button>
+                <button class="nav-item text-light nav-link" onclick="window.location='{{ url_for('main.itembycategory', category_id=5) }}'">Storage Device</button>
             </div>
-            
-            <a class="navbar-brand" href="#" id="logo"><img src="static/img/gadget.png" alt="icon"></a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span><i class="fa-solid fa-bars" style="color: white; font-size: 23px;"></i></span>
-                </button>
-
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{url_for('main.index')}}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('main.order')}}"> Cart </a>
-                        </li>
-                    </ul>
-
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{url_for('main.index')}}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('main.order')}}"> Cart </a>
+                    </li>
+                </ul>
                     <li class="nav-item">
                         <!-- search box -->
                         <form class="form-inline my-2 my-lg-0 ml-5">
@@ -76,7 +107,7 @@
                                 type="submit">Search</button>
                         </form>
                     </li>
-                   
+            
                 </div>
             </div>
         </nav>
@@ -127,7 +158,7 @@
             <a href="termsandconditions.html" class="btn btn-secondary">Terms & Conditions</a>
         </div>
         <div class="text-center py-2 bg-secondary">
-            <span class="text-light">Made by SM - IFN 557 - ASSIGNMENT 2 - GROUP &copy; October 2023</span>
+            <span class="text-light">Made by S&M - IFN 557 - ASSIGNMENT 2 - GROUP &copy; October 2023</span>
         </div>
     </footer>
     <!-- Footer -->
