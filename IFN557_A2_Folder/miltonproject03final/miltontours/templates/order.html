@@ -8,7 +8,7 @@
             <h3>Cart</h3>
         </div>
         <!-- each tour on seperate row -->
-        {% for item in order.item %}
+        {% for item in order.items %}
             <div class="row shadow-md my-row mb-3">
                 <div class="col-sm-10 card">
                     <h5 class="card-header">{{ item.price }} {{ item.name }}</h5>

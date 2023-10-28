@@ -98,7 +98,7 @@ def index():
 
 
 #DISPLAY ITEM CATEGORY IF IT EXIST *****************************************************************************
-@main_bp.route('/items/<int:category_id>')
+@main_bp.route('/itembycategory/<int:category_id>')
 def itembycategory(category_id):
     items_category = Item.query.filter(Item.item_category_id==category_id)
     #SENDING A ARRAY OF ITEMS WITH THE CATEGORY MATCHING THE SPECIFIED CATEGORY
@@ -202,7 +202,7 @@ def checkout():
     return render_template('checkout.html', form=form)
 
 #SHOWCASE ITEMS BY CATEGORY ****************************************************************************************************
-@main_bp.route('/items')
+@main_bp.route('/search')
 def search():
 
     search = request.args.get('search')
@@ -214,7 +214,7 @@ def search():
     return render_template('categories.html', items = items)
 
 #ADDED A BLUEPRINT FOR THE ITEMDETAILS PAGE # items/1 - for airpods etc. 
-@main_bp.route('/items/<int:itemid>')
+@main_bp.route('/itemdetails/<int:itemid>')
 def itemdetails(itemid):
     item = Item.query.filter(Item.id == itemid)
     return render_template('itemdetails.html', item = item)
