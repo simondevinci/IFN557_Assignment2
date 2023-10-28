@@ -52,7 +52,7 @@ class Order(db.Model):
         self.phone = phone
         self.total_cost = totalcost
         self.date = date
-        self.item = items
+        self.item = item
     
     def __repr__(self):
         return f"ID: {self.id}\nStatus: {self.status}\nFirst Name: {self.firstname}\nSurname: {self.surname}\nEmail: {self.email}\nPhone: {self.phone}\nItems: {self.item}\nDate: {self.date}\nShipping Address: {self.shippingdetails}\nTotal Cost: ${self.total_cost}"
