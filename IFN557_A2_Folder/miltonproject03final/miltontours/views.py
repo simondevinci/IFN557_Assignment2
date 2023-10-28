@@ -138,9 +138,9 @@ def order():
     # are we adding an item?
     if item_id is not None and order is not None:
         item = Item.query.get(item_id)
-        if item not in order.item:
+        if item not in order.items:
             try:
-                order.item.append(item)
+                order.items.append(item)
                 db.session.commit()
             except:
                 return 'There was an issue adding the item to your basket'
