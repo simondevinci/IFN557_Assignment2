@@ -14,7 +14,7 @@
         <!-- each item is a bootstrap card -->
 
         <div class="card">
-            <img class="card-img-top" src="{{ url_for('static', filename='static/img/'+item.image) }}" alt="Card image">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/'+item.image) }}" alt="Card image">
             <div class="card-body">
                 <h4 class="card-title">{{ item.name }}</h4>
                 <p class="card-text">{{ item.description }}</p>

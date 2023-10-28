@@ -80,7 +80,7 @@
             </div>
         </article>
         <article class="card">
-            <img class="card-img-top" src="{{url_for('static', filename='img/ScrewDriver.jpg')}};" alt="ScrewDriver" width="300" height="200">
+            <img class="card-img-top" src="{{url_for('static', filename='img/ScrewDriver.jpg')}}" alt="ScrewDriver" width="300" height="200">
             <div class="card-body">
                 <h3 class="card-title">9 PCS Magnetic Screwdriver Set</h3>
                 <p class="card-text">This screwdriver set features non-slip soft grips. Rubber-based ergonomically non-skid and soft-grip handle for improved control and comfort.</p>
@@ -119,7 +119,7 @@
             <div class="card-footer">
                 <form action="{{ url_for('main.order') }}">
                     <input type="hidden" id="item_id" name="item_id" value="{{ item.id }}">
-                    <input class="btn btn-primary" type="submit" value="Add to Cart">
+                    <input class="btn btn-secondary" type="submit" value="Add to Cart">
                 </form>
             
             </div>
