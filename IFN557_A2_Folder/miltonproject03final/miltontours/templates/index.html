@@ -2,10 +2,10 @@
 
 {% block head %}
 <!-- add a big banner to welcome user -->
-<div class="jumbotron jumbotron-fluid card card-image" style="background-image: url({{url_for('static', filename='img/header.jpg')}});">
+<div class="jumbotron jumbotron-fluid card card-image" style="background-image: url({{url_for('static', filename='img/banner.jpg')}});">
     <div class="text-white text-center py-5 px-4">
         <div>
-            <h1 class="display-2">Welcome to SM LoFi</h1>
+            <h1 class="display-2 text-dark">Welcome to SM LoFi</h1>
             <p class="display-4 text-dark">Buy stuff from us!</p>
         </div>
     </div>
@@ -14,13 +14,8 @@
 
 {% block main %}
 <!-- marketing information -->
-<section>
+<section class="section-border"> 
     <div class="container">
-        <div class="text-white text-center">
-            <div>
-                <p class="h1 text-dark mb-4">Why us?</p>
-            </div>
-        </div>
         <!-- CSS Grid -->
         <div class="row">
             <div class="col-md-6">
@@ -33,7 +28,6 @@
                         <li>Awesome after sales support</li>
                     </ul>
                 </article>
-
             </div>
         </div>
         <!-- Horizontal Rule -->
@@ -51,10 +45,10 @@
     <div class="card-deck">
 
 <h1>Our Featured Items</h1>
-<div class="container-fluid">
+    <div class="container-fluid">
     <div class="card-deck">
         <article class="card">
-            <img class="card-img-top" src="{{url_for('static', filename='img/AirPods.jpg')}}" alt="AirPods Pro (2nd Generation) 1" width="300" height="200">
+            <img class="card-img-top" src="{{url_for('static', filename='img/AirPods.jpg')}}" alt="AirPods Pro (2nd Generation) 1">
             <div class="card-body">
                 <h3 class="card-title">AirPods Pro (2nd Generation)</h3>
                 <p class="card-text">The Apple AirPods Pro (2nd generation) modestly improve upon the first-generation AirPods Pro and feature the same iconic look.</p>
@@ -69,7 +63,7 @@
             </div>
         </article>
         <article class="card">
-            <img class="card-img-top" src="{{url_for('static', filename='img/CASIO Calculator.jpg')}}" alt="CASIO Calculator" width="300" height="200">
+            <img class="card-img-top" src="{{url_for('static', filename='img/CASIO Calculator.jpg')}}" alt="CASIO Calculator">
             <div class="card-body">
                 <h3 class="card-title">CASIO fx-991ES PLUS</h3>
                 <p class="card-text">
@@ -86,7 +80,7 @@
             </div>
         </article>
         <article class="card">
-            <img class="card-img-top" src="{{url_for('static', filename='img/ScrewDriver.jpg')}}" alt="ScrewDriver" width="300" height="200">
+            <img class="card-img-top" src="{{url_for('static', filename='img/ScrewDriver.jpg')}}" alt="ScrewDriver">
             <div class="card-body">
                 <h3 class="card-title">9 PCS Magnetic Screwdriver Set</h3>
                 <p class="card-text">This screwdriver set features non-slip soft grips. Rubber-based ergonomically non-skid and soft-grip handle for improved control and comfort.</p>
@@ -100,8 +94,9 @@
                 </form>
             </div>
         </article>
+
         <article class="card">
-            <img class="card-img-top" src="{{url_for('static', filename='img/ApplePen.jpg')}}" alt="Apple Pen" width="300" height="200">
+            <img class="card-img-top" src="{{url_for('static', filename='img/ApplePen.jpg')}}" alt="Apple Pen">
             <div class="card-body">
                 <h3 class="card-title">Apple Pen (2nd Generation)</h3>
                 <p class="card-text">Apple Pencil (2nd generation) delivers pixel-perfect precision and industry-leading low latency, making it great for drawing, sketching, colouring, taking notes, marking up PDFs and more. And it’s as easy and natural to use as a pencil.</p>
@@ -116,29 +111,48 @@
             </div>
         </article>
     </div>
-</div>
-
-        {% for item in items %}
-        <div class="card">
-            <img class="card-img-top" src="{{ url_for('static', filename='img/'+item.image) }}" alt="Card image">
-            <div class="card-body">
-                <h4 class="card-title">{{ item.name }}</h4>
-                <p class="card-text">{{ item.description }}</p>
-                <p class="card-text"><strong>{{ "$%.2f"|format(item.price) }}</strong></p>
-                <a href= "{{ url_for('main.itemdetails', itemid=item.id) }}" class="btn btn-primary">View Details</a>
-
+</section>
+<hr>
+<section>
+    <div class="container">
+        <h2>Our full spread of available products</h2>
+        <div class="row">
+            {% for item in items %}
+            <div class="col-md-3">
+                <div class="card mb-4" style="height: 100%;">
+                    <img class="card-img-top" src="{{ url_for('static', filename='img/' + item.image) }}" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ item.name }}</h4>
+                        <p class="card-text">{{ item.description }}</p>
+                        <p class="card-text"><strong>{{ "$%.2f"|format(item.price) }}</strong></p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{{ url_for('main.itemdetails', itemid=item.id) }}" class="btn btn-block same-size-button">View Details</a>
+                            </div>
+                            <div class="col-md-6">
+                                <form action="{{ url_for('main.order') }}">
+                                    <input type="hidden" id="item_id" name="item_id" value="{{ item.id }}">
+                                    <input class="btn btn-block same-size-button" type="submit" value="Add to Cart">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-footer">
-                <form action="{{ url_for('main.order') }}">
-                    <input type="hidden" id="item_id" name="item_id" value="{{ item.id }}">
-                    <input class="btn btn-secondary" type="submit" value="Add to Cart">
-                </form>
-            
-            </div>
-
+            {% if loop.index is divisibleby 4 or loop.last %}
         </div>
-        {% endfor %}
+        <div class="row">
+            {% endif %}
+            {% endfor %}
+        </div>
     </div>
 </section>
+
+
+
+
+
 {% endblock %}
 
