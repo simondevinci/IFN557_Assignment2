@@ -35,11 +35,11 @@
                         </form> 
                 </div>
             </div>
-        
+        {% endfor %}
         <!-- total cost and page controls -->
         <section>
             <div class="row co-12 d-flex">
-                <h5 class="mt-4">Quote = {{ "$%.2f"|format(item.price) }}</h5>
+                <h5 class="mt-4">Quote = {{ "$%.2f"|format(total_price) }}</h5>
             </div>
         
             <div class="row co-12 d-flex mt-2 mb-4">
@@ -47,7 +47,6 @@
                 <a href="{{ url_for('main.deleteorder') }}" class="btn btn-primary">Empty Cart</a>
             </div>
         </section>
-        {% endfor %}
     </div>
 </section>
 {% endblock %}

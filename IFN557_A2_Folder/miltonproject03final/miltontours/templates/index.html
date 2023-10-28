@@ -62,7 +62,10 @@
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$300.00</strong></p>
                 <a href="{{ url_for('main.itemdetails', itemid=1)}}" class="btn btn-primary">View Details</a>
-                <a href="{{ url_for ('main.order')}}" class="btn btn-secondary">Add to Cart</a>
+                <form action="{{ url_for('main.order') }}">
+                    <input type="hidden" id="item_id" name="item_id" value="1">
+                    <input class="btn btn-secondary" type="submit" value="Add to Cart">
+                </form>
             </div>
         </article>
         <article class="card">
@@ -76,7 +79,10 @@
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$56.39</strong></p>
                 <a href="{{ url_for('main.itemdetails', itemid=2)}}" class="btn btn-primary">View Details</a>
-                <a href="{{ url_for ('main.order')}}" class="btn btn-secondary">Add to Cart</a>
+                <form action="{{ url_for('main.order') }}">
+                    <input type="hidden" id="item_id" name="item_id" value="2">
+                    <input class="btn btn-secondary" type="submit" value="Add to Cart">
+                </form>
             </div>
         </article>
         <article class="card">
@@ -88,7 +94,10 @@
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$27.49</strong></p>
                 <a href="{{ url_for('main.itemdetails', itemid=3)}}" class="btn btn-primary">View Details</a>
-                <a href="{{ url_for ('main.order')}}" class="btn btn-secondary">Add to Cart</a>
+                <form action="{{ url_for('main.order') }}">
+                    <input type="hidden" id="item_id" name="item_id" value="3">
+                    <input class="btn btn-secondary" type="submit" value="Add to Cart">
+                </form>
             </div>
         </article>
         <article class="card">
@@ -100,7 +109,10 @@
             <div class="card-footer mt-auto">
                 <p class="card-text"><strong>$319.00</strong></p>
                 <a href="{{ url_for('main.itemdetails', itemid=4)}}" class="btn btn-primary">View Details</a>
-                <a href="{{ url_for ('main.order')}}" class="btn btn-secondary">Add to Cart</a>
+                <form action="{{ url_for('main.order') }}">
+                    <input type="hidden" id="item_id" name="item_id" value="4">
+                    <input class="btn btn-secondary" type="submit" value="Add to Cart">
+                </form>
             </div>
         </article>
     </div>
