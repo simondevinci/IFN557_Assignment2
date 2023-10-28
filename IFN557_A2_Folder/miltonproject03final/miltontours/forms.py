@@ -10,7 +10,7 @@ class CheckoutForm(FlaskForm):
     email = StringField("Your email", validators=[InputRequired(), email()])
     phone = StringField("Your phone number", validators=[InputRequired()])
     shippingaddress = StringField("Your shipping address", validators=[InputRequired()])
-    submit = SubmitField("Confirm Information and Checkout")
+    submit = SubmitField("Send to Agent")
 
 
 # comment to check update reflected#
