@@ -4,27 +4,7 @@ from datetime import datetime
 from .forms import CheckoutForm
 from . import db
 
-# ADD DATABASE PART HERE
-#I ADDED IN MOST OF THE INFORMATION BUT HAVENT ADD DESCRIPTION, YOU CAN ADD IT HERE. JUST REMEMBER TO ADD THE DESCRIPTION VARIABLE INTO THE CONSTRUCTOR IN THE MODEL.PY
-#JUST NEED TO ADD IN DESCRIPTIONS THE 
-t1 = Item(image="t_AirPods.jpg",name="AirPods Pro 2", price=300.00, category="Electronics", itemid= 1,
-          itemdescription="to", extradetails="", categoryid= 1)
-t2 = Item(image="t_CASIO Calculator.jpg",name="CASIO fx-991ES PLUS", price=59.39, category="Office Supplies", itemid= 2,
-          itemdescription="", extradetails="", categoryid= 2)
-t3 = Item(image="t_ScrewDriver.jpg",name="9 PCS Magnetic Screwdriver Set", price=27.49, category="Hardware", itemid= 3,
-          itemdescription="", extradetails="", categoryid= 3)
-t4 = Item(image="t_ApplePen.jpg",name="Apple Pen", price=319.00, category="Electronics", itemid= 4,
-          itemdescription="", extradetails="", categoryid= 1)
-t5 = Item(image="t_OpenRun.jpg",name="Shokz OpenRun Bone Conductor Headphones", price=219.00, category="Earphones", itemid= 5,
-          itemdescription="", extradetails="", categoryid= 4)
-t6 = Item(image="t_LOck.jpg",name="ORIA Combination Lock", price=14.99, category="Office Supplies", itemid= 6,
-          itemdescription="", extradetails="", categoryid= 2)
-t7 = Item(image="t_AppleCable.jpg",name="Apple USB-C to Lightning Cable", price=29.00, category="Electronics", itemid= 7,
-          itemdescription="", extradetails="", categoryid= 1)
-t8 = Item(image="t_SanDisk.jpg",name="SanDisk 2TB SSD", price=214.99, category="Storage Device", itemid= 8,
-          itemdescription="", extradetails="", categoryid= 5)
-
-
+#adding categories into table
 c1 = Category(name= "Electronics", description="")
 c2 = Category(name= "Office Supplies", description="")
 c3 = Category(name= "Hardware", description="")
@@ -38,8 +18,60 @@ try:
     db.session.add(c4)
     db.session.add(c5)
     db.session.commit()
+    'Added Categories'
 except:
     'There was an issue adding categories in dbseed function'
+
+
+# ADD ITEM INTO TABLE
+t1 = Item(itemcategoryid = c1.id, 
+          name = 'AirPods Pro 2', 
+          description = '', 
+          image = 't_AirPods.jpg', 
+          price = 300.00, 
+          extra_details = '')
+t2 = Item(itemcategoryid = c2.id, 
+          name = 'CASIO fx-991ES PLUS', 
+          description = '', 
+          image = 't_CASIO Calsulator.jpg', 
+          price = 59.39, 
+          extra_details = '')
+t3 = Item(itemcategoryid = c3.id, 
+          name = '9 PCS Magnetic Screwdriver Set', 
+          description = '', 
+          image = 't_ScrewDriver.jpg', 
+          price = 27.49, 
+          extra_details = '')
+t4 = Item(itemcategoryid = c1.id, 
+          name = 'Apple Pen', 
+          description = '', 
+          image = 't_ApplePen.jpg', 
+          price = 319.00, 
+          extra_details = '')
+t5 = Item(itemcategoryid = c4.id, 
+          name = 'Shokz OpenRun Bone Conductor Headphones', 
+          description = '', 
+          image = 't_OpenRun.jpg', 
+          price = 219.00, 
+          extra_details = '')
+t6 = Item(itemcategoryid = c2.id, 
+          name = 'ORIA Combination Lock', 
+          description = '', 
+          image = 't_LOck.jpg', 
+          price = 14.99, 
+          extra_details = '')
+t7 = Item(itemcategoryid = c1.id, 
+          name = 'Apple USB-C to Lightning Cable', 
+          description = '', 
+          image = 't_AppleCable.jpg', 
+          price = 29.00, 
+          extra_details = '')
+t8 = Item(itemcategoryid = c5.id, 
+          name = 'SanDisk 2TB SSD', 
+          description = '', 
+          image = 't_SanDisk.jpg', 
+          price = 214.99, 
+          extra_details = '')
 
 try:
     db.session.add(t1)
@@ -51,6 +83,7 @@ try:
     db.session.add(t7)
     db.session.add(t8)
     db.session.commit()
+    'Added Items'
 except:
     'There was an issue adding a items in dbseed function'
 
@@ -87,7 +120,7 @@ def order():
 
     # create new order if needed
     if order is None:
-        order = Order(status = False, firstname='', surname='', email='', phone='', totalcost=0, date=datetime.now(), item = '')
+        order = Order(status = False, firstname='', surname='', email='', phone='', total_cost=0, date=datetime.now())
         try:
             db.session.add(order)
             db.session.commit()
@@ -99,7 +132,7 @@ def order():
     # calcultate totalprice
     total_price = 0
     if order is not None:
-        for item in order.item:
+        for item in order.items:
             total_price = total_price + item.price
     
     # are we adding an item?
