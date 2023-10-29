@@ -20,7 +20,7 @@
             <div class="card-body">
                 <h4 class="card-title">{{ item.name }}</h4>
                 <p class="card-text">{{ item.description }}</p>
-                <p class="card-text">{{ item.price }}</p>
+                <p class="card-text">{{ "$%.2f"|format (item.price)}}</p>
                 <p class="card-text">{{ item.item_category }}</p>
             </div>
 

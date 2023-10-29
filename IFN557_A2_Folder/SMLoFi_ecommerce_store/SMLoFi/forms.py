@@ -10,7 +10,9 @@ class CheckoutForm(FlaskForm):
     email = StringField("Your email", validators=[InputRequired(), email()])
     phone = StringField("Your phone number", validators=[InputRequired()])
     shippingaddress = StringField("Your shipping address", validators=[InputRequired()])
-    submit = SubmitField("Send to Agent")
+    carddetails = StringField("Your card details", validators=[InputRequired()])
+    cardcvv = StringField("Your card cvv", validators=[InputRequired()])
+    submit = SubmitField("Confirm Order")
 
 
 # comment to check update reflected#
