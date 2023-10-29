@@ -3,36 +3,43 @@
 {% block main %}
 <!-- display more details on selected item when click on view details button -->
 <section>
-
     <div class="text-dark text-center">
         <div>
-            <p class="h3 text-dark mb-4">Item Details</p>
+            <p class="h3 text-dark mb-4 font-weight-bold">Item Details</p>
         </div>
     </div>
     {% for item in item %}
     <section>
-        <div id="ItemTitle">
-            <h2>{{ item.name }}</h2>
-        </div>
-
         <div class="container">
-            <div class="image">
-                <img src="{{ url_for('static', filename='img/'+item.image) }}" alt="AirPods Pro (2nd Generation)">
-            </div>
-            <div class="ItemDescription">
-                <p>
-                    <p>{{ item.description }}</p>
-                    <b id="About" style="left: auto;">Item Price</b>
-                    <p>{{ item.price }}</p>
-                    <b id="About" style="left: auto;">Extra Details</b>
-                    <p>{{ item.extra_details }}</p>
-                </p>
-            </div>
-            <div class="footer">
-                <form action="{{ url_for('main.order') }}">
-                    <input type="hidden" id="item_id" name="item_id" value="{{ item.id }}">
-                    <input class="btn btn-primary" type="submit" value="Add to Cart">
-                </form>
+            <h2>{{ item.name }}</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="details image">
+                        <img src="{{ url_for('static', filename='img/' + item.image) }}" alt="{{ item.name }}" class="img-fluid image-size">
+                    </div>
+                </div>
+                
+                <div class="col-md-8">
+                    <div class="ItemDescription"> 
+                        <p>{{ item.description }}</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><b>Item Price</b></p>
+                                <p>{{ "$%.2f"|format (item.price) }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><b>Extra Details</b></p>
+                                <p>{{ item.extra_details }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <form action="{{ url_for('main.order') }}">
+                            <input type="hidden" id="item_id" name="item_id" value="{{ item.id }}">
+                            <button class="btn btn-primary" type="submit">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

@@ -16,7 +16,8 @@
     <!-- an example of using css alongside bootstrap -->
     <style>
         /* to place border around items in the shopping basket - orders.html */
-      
+
+        /* Add this CSS in your HTML file or an external CSS file */      
         .my-row {
             border: 1px solid grey;
         }
@@ -63,6 +64,11 @@
             max-width: 100%;
             max-height: 100%;
         }
+
+        .image-size{
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 
 </head>
@@ -76,7 +82,7 @@
         <!-- Colours https://getbootstrap.com/docs/4.0/utilities/colors/ -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">
-                <img src= "static/img/gadget.png" alt="SM LoFi Logo" width="30" height="30" class="d-inline-block align-top" alt="SM LoFi Logo">
+                <img src="{{ url_for('static', filename='img/gadget.png') }}" alt="SM LoFi Logo" width="30" height="30" class="d-inline-block align-top" alt="SM LoFi Logo">
                 SM LoFi
             </a>
 
@@ -98,22 +104,9 @@
                         <a class="nav-link active" aria-current="page" href="{{url_for('main.index')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About Us</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{url_for('main.order')}}"> Cart </a>
                     </li>
                 </ul>
-                    <li class="nav-item">
-                        <!-- search box -->
-                        <form class="form-inline my-2 my-lg-0 ml-5">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-black btn btn-secondary btn-s my-0 ml-1"
-                                type="submit">Search</button>
-                        </form>
-                    </li>
-            
-                </div>
             </div>
         </nav>
 
@@ -145,12 +138,6 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="text-center mt-2">
-            <a href="shipping-policy.html" class="btn btn-secondary">Shipping Policy</a>
-        </div>
-        <div class="text-center mt-2">
-            <a href="termsandconditions.html" class="btn btn-secondary">Terms & Conditions</a>
-        </div>
         <div class="text-center py-2 bg-secondary">
             <span class="text-light">Made by S&M - IFN 557 - ASSIGNMENT 2 - GROUP &copy; October 2023</span>
         </div>

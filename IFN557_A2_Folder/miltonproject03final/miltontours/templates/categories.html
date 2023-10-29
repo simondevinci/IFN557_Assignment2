@@ -16,18 +16,21 @@
         {% for item in items%}
         <div class="card">
             <img class="card-img-top" src="{{ url_for('static', filename='img/'+item.image) }}" alt="Card image">
+
             <div class="card-body">
                 <h4 class="card-title">{{ item.name }}</h4>
                 <p class="card-text">{{ item.description }}</p>
                 <p class="card-text">{{ item.price }}</p>
                 <p class="card-text">{{ item.item_category }}</p>
             </div>
+
             <div class="card-footer">
                 <form action="{{ url_for('main.order') }}">
                     <input type="hidden" id="item_id" name="item_id" value="{{ item.id }}">
                     <input class="btn btn-primary" type="submit" value="Add to Cart">
                 </form>
             </div>
+            
         </div>
         {% endfor %}
     </div>
